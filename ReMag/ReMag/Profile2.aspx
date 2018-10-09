@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="ReMag.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile2.aspx.cs" Inherits="ReMag.Profile2" %>
 
 <!DOCTYPE html>
 
@@ -16,10 +16,10 @@
 
             <nav class="nav-extended">
                 <div class="nav-wrapper green lighten-2">
-                    <a href="#!" class="brand-logo">ReMag</a>
+                    <a href="default.aspx" class="brand-logo">ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="sass.html">Profile</a></li>
+                        <li><a href="Profile2.aspx">Profile</a></li>
                         <li><a href="badges.html">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
@@ -28,45 +28,30 @@
             </nav>
 
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="sass.html">Profile</a></li>
+                <li><a href="Profile2.aspx">Profile</a></li>
                 <li><a href="badges.html">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
 
-            <h1>Welcome to ReMag</h1>
-            <p>we have a lot to do</p>
+            <h1>Profile</h1>
             <p>
-                scope<br />
-                create a profile page<br />
-                create mission page<br />
-                create a way to post your mag<br />
-                - users will post a price
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
+                    <Columns>
+                        <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                        <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                        <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                        <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
+                        <asp:BoundField DataField="bio" HeaderText="bio" SortExpression="bio" />
+                    </Columns>
+                </asp:GridView>
             </p>
-
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Login</h4>
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" />
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" />
-                        <label for="email">Password</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                </div>
-            </div>
-
-
         </div>
     </form>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting" 
+        ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" 
+        SelectCommand="SELECT * FROM [Profile]"></asp:SqlDataSource>
 
 
 
@@ -74,10 +59,6 @@
 
         $(document).ready(function () {
             $('.sidenav').sidenav();
-        });
-
-        $(document).ready(function () {
-            $('.modal').modal();
         });
 
     </script>

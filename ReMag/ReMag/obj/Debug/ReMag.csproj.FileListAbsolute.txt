@@ -51,7 +51,6 @@ C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\bin\roslyn\VBCSCompiler.exe
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\obj\Debug\ReMag.csprojAssemblyReference.cache
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\obj\Debug\ReMag.csproj.CoreCompileInputs.cache
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\obj\Debug\ReMag.csproj.CopyComplete
 C:\Users\mstrong\Documents\GitHub\ReMag\ReMag\ReMag\obj\Debug\ReMag.dll
