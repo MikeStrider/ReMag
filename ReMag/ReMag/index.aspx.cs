@@ -13,5 +13,10 @@ namespace ReMag
         {
 
         }
+
+        protected void SqlDataSource1_Selecting()
+        {
+
+        }
     }
 }
