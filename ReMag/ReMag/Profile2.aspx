@@ -13,26 +13,26 @@
 <body class="green lighten-4">
     <form id="form1" runat="server">
         <div class="container">
-
+            <%--NavBar--%>
             <nav class="nav-extended">
-                <div class="nav-wrapper green lighten-2">
-                    <a href="default.aspx" class="brand-logo">ReMag</a>
+                <div  class="nav-wrapper green lighten-2">
+                    <a href="default.aspx" class="brand-logo"> ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="Profile2.aspx">Profile</a></li>
                         <li><a href="badges.html">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
-                        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
+                        <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
                 </div>
             </nav>
-
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="Profile2.aspx">Profile</a></li>
                 <li><a href="badges.html">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
-                <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
+                <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
+            <%----------%>
 
             <h1>Profile</h1>
             <p>
@@ -49,11 +49,8 @@
         </div>
     </form>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting" 
-        ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" 
         SelectCommand="SELECT * FROM [Profile]"></asp:SqlDataSource>
-
-
 
     <script type="text/javascript">
 
