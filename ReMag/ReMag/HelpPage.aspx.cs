@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace ReMag
 {
-    public partial class Profile2 : System.Web.UI.Page
+    public partial class HelpPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
