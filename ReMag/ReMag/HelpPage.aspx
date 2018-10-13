@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile2.aspx.cs" Inherits="ReMag.Profile2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpPage.aspx.cs" Inherits="ReMag.HelpPage" %>
 
 <!DOCTYPE html>
 
@@ -9,17 +9,27 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+
+     body {
+        font-family: Palatino;
+     }
+
+    </style>
 </head>
 <body class="green lighten-4">
     <form id="form1" runat="server">
         <div class="container">
+
             <%--NavBar--%>
             <nav class="nav-extended">
-                <div  class="nav-wrapper green lighten-2">
+                <div class="nav-wrapper green lighten-2">
                     <a href="default.aspx" class="brand-logo"> ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="Profile2.aspx">Profile</a></li>
+                        <li><a href="default.aspx">Home</a></li>
+                        <li><a href="Profile.aspx">Profile</a></li>
                         <li><a href="badges.html">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
@@ -27,13 +37,15 @@
                 </div>
             </nav>
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="Profile2.aspx">Profile</a></li>
+                <li><a href="default.aspx">Home</a></li>
+                <li><a href="Profile.aspx">Profile</a></li>
                 <li><a href="badges.html">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
             <%----------%>
 
+            <%--Body--%>
             <h1>Profile</h1>
             <p>
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
@@ -46,19 +58,22 @@
                     </Columns>
                 </asp:GridView>
             </p>
+            <%--------%>
+
         </div>
-    </form>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" 
-        SelectCommand="SELECT * FROM [Profile]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" OnSelecting="SqlDataSource1_Selecting" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" 
+            SelectCommand="SELECT * FROM [Profile]"></asp:SqlDataSource>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
 
-    </script>
+        </script>
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 </html>
