@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="HelpPage.aspx" />
+    <Content Include="myJavaScript.js" />
     <Content Include="MyMagazines.aspx" />
     <Content Include="myStyles.css" />
     <Content Include="UserProfile.aspx" />
@@ -98,6 +99,7 @@
       <DependentUpon>MyMagazines.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedClass.cs" />
     <Compile Include="UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

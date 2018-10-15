@@ -17,10 +17,12 @@ namespace ReMag
         {
             if (Session["LoggedIn"] != null)
             {
-                ((HtmlAnchor)(FindControl("loginbtn"))).Attributes.Add("class", "disabled");
                 loginbtn.InnerText = (String)Session["LoggedIn"];
-                ((HtmlAnchor)(FindControl("loginbtn2"))).Attributes.Add("class", "disabled");
                 loginbtn2.InnerText = (String)Session["LoggedIn"];
+                loginbtn.HRef = "#modal2";
+                loginbtn2.HRef = "#modal2";
+                ((HtmlAnchor)(FindControl("loginbtn"))).Attributes.Add("class", "waves-effect waves-light btn modal-trigger green lighten-2");
+                ((HtmlAnchor)(FindControl("loginbtn2"))).Attributes.Add("class", "waves-effect waves-light btn modal-trigger green lighten-2");
             } else
             {
                 Response.Redirect("default.aspx?dn=Y");
@@ -69,6 +71,12 @@ namespace ReMag
                 da.Fill(ds);
             }
             Response.Redirect("UserProfile.aspx?sc=Y");
+        }
+
+        protected void Logout_ServerClick(object sender, EventArgs e)
+        {
+            Session["LoggedIn"] = null;
+            Response.Redirect("default.aspx?lo=Y");
         }
     }
 }

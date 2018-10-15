@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="myStyles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myJavaScript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -46,12 +47,14 @@
             <%--Body--%>
             <h1>Welcome to ReMag</h1>
             <p>we have a lot to do</p>
-            <p>Sell you magazines and look for mags to buy.<br />
+            <p>
+                Sell you magazines and look for mags to buy.<br />
                 You will need an account.  Once created you can update your Profile.<br />
                 My Mags allows you to post magazines available for sale.<br />
                 Shop is a list of mags available to buy.<br />
-                Explore has reviews and features articles.<br /><br />
-
+                Explore has reviews and features articles.<br />
+                <br />
+                
                 Page uses Materialize from google.  SQL, ASP.NET, JavaScript, etc.<br /><br />
 
                 Katan Board can be found on GitHub.  Slack chat room is available to discuss the Project.<br /><br />
@@ -59,7 +62,6 @@
                 We are using "Toasts" to update when the user as they navigate the site.<br /><br />
 
                 Service Workers will be used later in the project.
-
             </p>
             <div id="snackbar">Some text some message..</div>
             <%--------%>
@@ -131,59 +133,6 @@
             </div>
             <%------------------------%>
         </div>
-
-        <script>
-            $(document).ready(function () {
-                $('.sidenav').sidenav();
-                $('.modal').modal();
-                $('.modal2').modal();
-                $('.collapsible').collapsible();
-            });
-
-            $.urlParam = function (name) {
-                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                if (results == null) {
-                    return null;
-                }
-                else {
-                    return decodeURI(results[1]) || 0;
-                }
-            }
-
-            var x = document.getElementById("snackbar");
-            if ($.urlParam('ln') == 'Y') {
-                x.innerText = "success - you are now logged in";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-            if ($.urlParam('lo') == 'Y') {
-                x.innerText = "success - you are now logged out";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-            if ($.urlParam('reg') == 'Y') {
-                x.innerText = "success - you are now registered and logged in";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-            if ($.urlParam('lf') == 'Y') {
-                x.innerText = "fail - invalid credentials";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-            if ($.urlParam('ex') == 'Y') {
-                x.innerText = "fail - unable to create user, please check required fields";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-            if ($.urlParam('dn') == 'Y') {
-                x.innerText = "fail - navigation denied, please login first";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-
-        </script>
-
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 

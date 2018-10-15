@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="myStyles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myJavaScript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body class="green lighten-4">
@@ -86,32 +87,26 @@
             </div>
             <div id="snackbar">Some text some message..</div>
             <%--------%>
+
+            <%--Log Out Box--%>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <ul class="collapsible">
+                        <li class="active">
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>Log Out</div>
+                            <div class="collapsible-body">
+                                <div class="modal-footer">
+                                    <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Logout_ServerClick">Confirm</a>
+                                    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <%---------------%>
+
         </div>
-
-        <script type="text/javascript">
-
-            $(document).ready(function () {
-                $('.sidenav').sidenav();
-            });
-
-            $.urlParam = function (name) {
-                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                if (results == null) {
-                    return null;
-                }
-                else {
-                    return decodeURI(results[1]) || 0;
-                }
-            }
-
-            if ($.urlParam('sc') == 'Y') {
-                var x = document.getElementById("snackbar");
-                x.innerText = "success - profile has been saved";
-                x.className = "show";
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-            }
-
-        </script>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
