@@ -38,8 +38,7 @@ namespace ReMag
                 {
                     Response.Redirect("default.aspx?ex=Y");
                 }
-                else
-                {
+                else {
                     SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Profile] (name, email, [password]) VALUES (@username, @email, @password)", conn);
                     da.SelectCommand.Parameters.AddWithValue("@email", email1.Value);
                     da.SelectCommand.Parameters.AddWithValue("@password", password1.Value);
@@ -63,6 +62,21 @@ namespace ReMag
                 int userCount = (int)sqlCommand.ExecuteScalar();
                 if (userCount > 0)
                 {
+                    SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
+                    conn2.Open();
+                    var cmd2 = new SqlCommand();
+                    cmd2.CommandText = "SELECT * FROM Profile WHERE name = '" + username.Value + "'";
+                    cmd2.Connection = conn;
+                    var reader = cmd2.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Session["LoggedInID"] = reader["ID"].ToString();
+                        }
+                    }
+                    reader.Close();
+                    conn2.Close();
                     Session["LoggedIn"] = username.Value;
                     Response.Redirect("default.aspx?ln=Y");
                 }

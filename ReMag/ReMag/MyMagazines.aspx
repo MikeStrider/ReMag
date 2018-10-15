@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMagazines.aspx.cs" Inherits="ReMag.MyMagazines" %>
 
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>ReMag</title>
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="myStyles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myJavaScript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body class="green lighten-4">
@@ -41,16 +44,54 @@
             <%--Body--%>
             <h1>My Magazines</h1>
             <p>List of Mags you are wanting to sell.</p>
+            <div class="row">
+                <div class="input-field col s6">
+                    <asp:DropDownList ID="ddl_Retired" runat="server" AutoPostBack="True">
+                        <asp:ListItem Text="Showing Active Mags" Value="N"></asp:ListItem>
+                        <asp:ListItem Text="Showing Expired Mags" Value="Y"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                    <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
+                    <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                    <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+                    <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                    <asp:BoundField DataField="posted" HeaderText="posted" SortExpression="posted" />
+                </Columns>
+            </asp:GridView>
 
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>"
+                SelectCommand="SELECT ID, title, posted, retired, image, description, type, [user] FROM MyMags WHERE ([user] = @userID) and retired = @retired">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userID" SessionField="LoggedInID" />
+                    <asp:ControlParameter ControlID="ddl_Retired" Name="retired" PropertyName="SelectedValue" />
+                </SelectParameters>
+            </asp:SqlDataSource>
             <%--------%>
 
-            <script type="text/javascript">
+            <%--Log Out Box--%>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <ul class="collapsible">
+                        <li class="active">
+                            <div class="collapsible-header"><i class="material-icons">filter_dramarama</i>Log Out</div>
+                            <div class="collapsible-body">
+                                <div class="modal-footer">
+                                    <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Logout_ServerClick">Confirm</a>
+                                    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <%---------------%>
+        </div>
 
-                $(document).ready(function () {
-                    $('.sidenav').sidenav();
-                });
-
-            </script>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
