@@ -16,10 +16,10 @@ namespace ReMag
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoggedIn"] != null) {
-                ((HtmlAnchor)(FindControl("loginbtn"))).InnerText = (String)Session["LoggedIn"];
-                ((HtmlAnchor)(FindControl("loginbtn2"))).InnerText = (String)Session["LoggedIn"];
-                ((HtmlAnchor)(FindControl("loginbtn"))).HRef = "#modal2";
-                ((HtmlAnchor)(FindControl("loginbtn2"))).HRef = "#modal2";
+                loginbtn.InnerText = (String)Session["LoggedIn"];
+                loginbtn2.InnerText = (String)Session["LoggedIn"];
+                loginbtn.HRef = "#modal2";
+                loginbtn2.HRef = "#modal2";
                 ((HtmlAnchor)(FindControl("loginbtn"))).Attributes.Add("class", "waves-effect waves-light btn modal-trigger green lighten-2");
                 ((HtmlAnchor)(FindControl("loginbtn2"))).Attributes.Add("class", "waves-effect waves-light btn modal-trigger green lighten-2");
             }
@@ -46,7 +46,6 @@ namespace ReMag
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     Session["LoggedIn"] = username1.Value;
-                    Session["LoggedInID"] = GetUserID(username1.Value);
                     Response.Redirect("default.aspx?reg=Y");
                 }
             }
@@ -63,7 +62,21 @@ namespace ReMag
                 int userCount = (int)sqlCommand.ExecuteScalar();
                 if (userCount > 0)
                 {
-                    Session["LoggedInID"] = GetUserID(username.Value);
+                    SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
+                    conn2.Open();
+                    var cmd2 = new SqlCommand();
+                    cmd2.CommandText = "SELECT * FROM Profile WHERE name = '" + username.Value + "'";
+                    cmd2.Connection = conn;
+                    var reader = cmd2.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Session["LoggedInID"] = reader["ID"].ToString();
+                        }
+                    }
+                    reader.Close();
+                    conn2.Close();
                     Session["LoggedIn"] = username.Value;
                     Response.Redirect("default.aspx?ln=Y");
                 }
@@ -78,27 +91,6 @@ namespace ReMag
         {
             Session["LoggedIn"] = null;
             Response.Redirect("default.aspx?lo=Y");
-        }
-
-        protected string GetUserID (string userName)
-        {
-            string x = "nothing";
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
-            conn.Open();
-            var cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM Profile WHERE name = '" + userName + "'";
-            cmd.Connection = conn;
-            var reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    x = reader["ID"].ToString();
-                }
-            }
-            reader.Close();
-            conn.Close();
-            return x;
         }
     }
 }

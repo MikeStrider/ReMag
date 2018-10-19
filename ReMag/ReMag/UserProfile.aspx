@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="ReMag.UserProfile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="ReMag.UserProfile" %>
 
 <!DOCTYPE html>
 
@@ -23,7 +23,7 @@
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="default.aspx">Home</a></li>
-                        <li class="active"><a href="UserProfile.aspx">Profile</a></li>
+                        <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="badges.html">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
@@ -34,7 +34,7 @@
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
-                <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
+                <li><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="badges.html">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
@@ -42,7 +42,7 @@
             <%----------%>
 
             <%--Body--%>
-            <h3>Profile</h3>
+            <h1>Profile</h1>
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -87,17 +87,6 @@
             </div>
             <div id="snackbar">Some text some message..</div>
             <%--------%>
-
-            <%--Footer--%>
-            <footer class="page-footer green lighten-2">
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
-                    </div>
-                </div>
-            </footer>
-            <%--Footer--%>
 
             <%--Log Out Box--%>
             <div id="modal2" class="modal">

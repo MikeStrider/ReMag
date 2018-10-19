@@ -69,10 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
-    <Content Include="footer.html" />
-    <Content Include="header.html" />
     <Content Include="HelpPage.aspx" />
-    <Content Include="images.aspx" />
     <Content Include="myJavaScript.js" />
     <Content Include="MyMagazines.aspx" />
     <Content Include="myStyles.css" />
@@ -93,13 +90,6 @@
     </Compile>
     <Compile Include="HelpPage.aspx.designer.cs">
       <DependentUpon>HelpPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="images.aspx.cs">
-      <DependentUpon>images.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="images.aspx.designer.cs">
-      <DependentUpon>images.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyMagazines.aspx.cs">
       <DependentUpon>MyMagazines.aspx</DependentUpon>
