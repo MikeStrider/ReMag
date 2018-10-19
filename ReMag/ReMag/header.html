@@ -1,0 +1,46 @@
+﻿
+<!--<%--NavBar--%>-->
+<nav class="nav-extended">
+    <div class="nav-wrapper green lighten-2">
+        <a href="default.aspx" class="brand-logo">ReMag</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li id="idDefault"><a href="default.aspx">Home</a></li>
+            <li id="idProfile"><a href="UserProfile.aspx">Profile</a></li>
+            <li id="idMyMag"><a href="MyMagazines.aspx">My Mags</a></li>
+            <li><a href="badges.html">Shop</a></li>
+            <li><a href="collapsible.html">Explore</a></li>
+            <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li id="idDefault"><a href="default.aspx">Home</a></li>
+    <li id="idProfile"><a href="UserProfile.aspx">Profile</a></li>
+    <li id="idMyMag"><a href="MyMagazines.aspx">My Mags</a></li>
+    <li><a href="badges.html">Shop</a></li>
+    <li><a href="collapsible.html">Explore</a></li>
+    <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
+</ul>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        var pathname = window.location.pathname;
+
+        if (pathname == "default.aspx") {
+           document.getElementById("idDefault").classList.add("active");
+        }
+        else if (pathname == "UserProfile.aspx") {
+            document.getElementById("idProfile").classList.add("active");
+        }
+        else if (pathname == "MyMagazines.aspx") {
+                document.getElementById("idMyMag").classList.add("active");
+        }
+
+    });
+</script>
+<!--<%----------%>-->

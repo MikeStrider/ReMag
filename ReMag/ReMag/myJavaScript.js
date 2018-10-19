@@ -1,9 +1,13 @@
 ﻿$(document).ready(function () {
-    $('.sidenav').sidenav();
     $('.modal').modal();
-    $('.modal2').modal();
     $('.collapsible').collapsible();
     $('select').formSelect();
+    $('.sidenav').sidenav();
+    $('.carousel').carousel({
+        fullWidth: false,
+        indicators: true,
+        padding:50
+    });
 
     $.urlParam = function (name) {
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -48,6 +52,21 @@
     }
     if ($.urlParam('sc') == 'Y') {
         x.innerText = "success - profile has been saved";
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+    }
+    if ($.urlParam('ad') == 'Y' && document.getElementById("Label1").innerText == "Label") {
+            x.innerText = "success - magazine has been added";
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+    }
+    if ($.urlParam('up') == 'Y') {
+        x.innerText = "success - image has been uploaded";
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+    }
+    if ($.urlParam('up') == 'N') {
+        x.innerText = "failed - see stack for more info";
         x.className = "show";
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
     }
