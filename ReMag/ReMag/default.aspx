@@ -24,7 +24,7 @@
                     <a href="default.aspx" class="brand-logo">ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="default.aspx">Home</a></li>
+                        <li class="active"><a href="default.aspx">Home</a></li>
                         <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="badges.html">Shop</a></li>
@@ -34,7 +34,7 @@
                 </div>
             </nav>
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="default.aspx">Home</a></li>
+                <li class="active"><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
                 <li><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="badges.html">Shop</a></li>
@@ -45,16 +45,16 @@
 
 
             <%--Body--%>
-            <h1>Welcome to ReMag</h1>
+            <h3>Welcome to ReMag</h3>
             <p>we have a lot to do</p>
             <p>
-                Sell you magazines and look for mags to buy.<br />
+                Sell you magazines and look for mags to buy.  You can buy single issues or sign up for monthly.  The seller will ship monthly. <br />
                 You will need an account.  Once created you can update your Profile.<br />
-                My Mags allows you to post magazines available for sale.<br />
+                The My Mags page allows you to post magazines available for sale.<br />
                 Shop is a list of mags available to buy.<br />
                 Explore has reviews and features articles.<br />
                 <br />
-                
+
                 Page uses Materialize from google.  SQL, ASP.NET, JavaScript, etc.<br /><br />
 
                 Katan Board can be found on GitHub.  Slack chat room is available to discuss the Project.<br /><br />
@@ -62,10 +62,9 @@
                 We are using "Toasts" to update when the user as they navigate the site.<br /><br />
 
                 Service Workers will be used later in the project.
-            </p>
+            </p><br /><br />
             <div id="snackbar">Some text some message..</div>
             <%--------%>
-
 
             <%--Log Out Box--%>
             <div id="modal2" class="modal">
@@ -90,7 +89,7 @@
                 <div class="modal-content">
                     <ul class="collapsible">
                         <li>
-                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>Login</div>
+                            <div class="collapsible-header" id="logindiv"><i class="material-icons">filter_drama</i>Login</div>
                             <div class="collapsible-body">
                                 <div class="input-field col s12">
                                     <input runat="server" id="username" type="text" class="validate" />
@@ -107,7 +106,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header"><i class="material-icons">card_membership</i>Register</div>
+                            <div class="collapsible-header" id="regdiv"><i class="material-icons">card_membership</i>Register</div>
                             <div class="collapsible-body">
                                 <div class="input-field col s12">
                                     <input runat="server" id="username1" type="text" class="validate" />
@@ -132,6 +131,18 @@
                 </div>
             </div>
             <%------------------------%>
+
+            <%--Footer--%>
+            <footer class="page-footer green lighten-2">
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2018 Copyright 
+                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                    </div>
+                </div>
+            </footer>
+            <%--Footer--%>
+
         </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
