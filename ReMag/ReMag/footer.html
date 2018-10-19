@@ -1,0 +1,77 @@
+﻿
+<!--<%--Footer--%>-->
+<footer class="page-footer green lighten-2">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+        </div>
+    </div>
+</footer>
+<!--<%--Footer--%>-->
+
+<!--<%--Log Out Box--%>-->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>Log Out</div>
+                <div class="collapsible-body">
+                    <div class="modal-footer">
+                        <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Logout_ServerClick">Confirm</a>
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--<%---------------%>-->
+
+<!-- Login / Register Box -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">filter_drama</i>Login</div>
+                <div class="collapsible-body">
+                    <div class="input-field col s12">
+                        <input runat="server" id="username" type="text" class="validate" />
+                        <label for="username">User Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input runat="server" id="password" type="password" class="validate" />
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="modal-footer">
+                        <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Login_ServerClick">Login</a>
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">card_membership</i>Register</div>
+                <div class="collapsible-body">
+                    <div class="input-field col s12">
+                        <input runat="server" id="username1" type="text" class="validate" />
+                        <label for="username1">User Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input runat="server" id="email1" type="email" class="validate" />
+                        <label for="email1">Email</label>
+                        <span class="helper-text" data-error="please enter valid email"></span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input runat="server" id="password1" type="password" class="validate" />
+                        <label for="password1">Password</label>
+                    </div>
+                    <div class="modal-footer">
+                        <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Register_ServerClick">Register</a>
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-------------------------->
