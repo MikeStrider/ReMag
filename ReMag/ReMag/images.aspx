@@ -24,20 +24,20 @@
                     <a href="default.aspx" class="brand-logo">ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li class="active"><a href="default.aspx">Home</a></li>
+                        <li><a href="default.aspx">Home</a></li>
                         <li><a href="UserProfile.aspx">Profile</a></li>
-                        <li><a href="MyMagazines.aspx">My Mags</a></li>
-                        <li><a href="badges.html">Shop</a></li>
+                        <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
+                        <li><a href="Shop.aspx">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
                 </div>
             </nav>
             <ul class="sidenav" id="mobile-demo">
-                <li class="active"><a href="default.aspx">Home</a></li>
+                <li><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
-                <li><a href="MyMagazines.aspx">My Mags</a></li>
-                <li><a href="badges.html">Shop</a></li>
+                <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
+                <li><a href="Shop.aspx">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
@@ -45,24 +45,36 @@
 
             <%--Body--%>
             <h3>Images</h3>
+            <div class="row">
+                <div class="input-field col s6">
+                    <asp:FileUpload ID="FileUploadControl" runat="server" />
+                    <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
+                </div>
+                <div class="input-field col s3">
+                    <asp:LinkButton ID="LinkButton2" class="waves-effect waves-light btn" runat="server" OnClick="Button1_Click1">Delete Center Image</asp:LinkButton>
+                </div>
+                <div class="input-field col s3">
+                    <asp:LinkButton ID="LinkButton3" class="waves-effect waves-light btn" runat="server" OnClick="LinkButton3_Click">Set As Primary</asp:LinkButton>
+                </div>
+                <input type="hidden" runat="server" id="hiddenID" value="3487" />
 
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-
-                <asp:FileUpload ID="FileUploadControl" runat="server" />
-                <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
-            <br />
-            <br />
-            <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
-
-            <div class="carousel carousel-slider center" data-indicators="true">
-                <a class="carousel-item" href="#one!"><img src="/images/alkmaps.png" /></a>
-                <a class="carousel-item" href="#two!"><img src="/images/Edit_Device.png" /></a>
-                <a class="carousel-item" href="#three!"><img src="/images/Save_Success.png" /></a>
+                <br />
+                <br />
+                <div class="carousel carousel-slider center" data-indicators="true">
+                    <div class="carousel-fixed-item center middle-indicator">
+                        <div class="left">
+                            <a href="Previo" class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons left  middle-indicator-text">chevron_left</i></a>
+                        </div>
+                        <div class="right">
+                            <a href="Siguiente" class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons right middle-indicator-text">chevron_right</i></a>
+                        </div>
+                    </div>
+                    <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
+                </div>
+                <br />
+                <br />
+                <div id="snackbar">Some text some message..</div>
             </div>
-
-            <br />
-            <br />
-            <div id="snackbar">Some text some message..</div>
             <%--------%>
 
             <%--Footer--%>
@@ -75,6 +87,7 @@
                 </div>
             </footer>
             <%--Footer--%>
+        </div>
         </div>
     </form>
 

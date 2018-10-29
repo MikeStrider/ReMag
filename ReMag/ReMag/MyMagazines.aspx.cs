@@ -71,7 +71,7 @@ namespace ReMag
                 SingleSub = "Subscription";
             }
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
-            SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [MyMags] (title, posted, [retired], description, [type], [user], [price]) VALUES (@title, @posted, @retired, @description, @type, @user, @price)", conn);
+            SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [MyMags] (title, posted, [retired], description, [type], [user], [price], [image]) VALUES (@title, @posted, @retired, @description, @type, @user, @price, @image)", conn);
             da.SelectCommand.Parameters.AddWithValue("@title", txtTitle.Value);
             da.SelectCommand.Parameters.AddWithValue("@posted", "N");
             da.SelectCommand.Parameters.AddWithValue("@retired", "N");
@@ -79,8 +79,19 @@ namespace ReMag
             da.SelectCommand.Parameters.AddWithValue("@type", SingleSub);
             da.SelectCommand.Parameters.AddWithValue("@user", (string)Session["LoggedInID"]);
             da.SelectCommand.Parameters.AddWithValue("@price", txtPrice.Value);
+            da.SelectCommand.Parameters.AddWithValue("@image", "/images/nopreview.png");
             DataSet ds = new DataSet();
             da.Fill(ds);
+
+            int magID = GetMagID((string)Session["LoggedInID"], txtTitle.Value);
+
+            SqlDataAdapter da2 = new SqlDataAdapter("INSERT INTO [images] ([MagID], [path]) VALUES (@ID, @path)", conn);
+            da2.SelectCommand.Parameters.AddWithValue("@ID", magID);
+            da2.SelectCommand.Parameters.AddWithValue("@path", "/images/nopreview.png");
+            DataSet ds2 = new DataSet();
+            da2.Fill(ds2);
+
+
             Response.Redirect("MyMagazines.aspx?ad=Y");
         }
 
@@ -115,6 +126,26 @@ namespace ReMag
 
             //    }
             //}
+        }
+        protected int GetMagID(string userName, string title)
+        {
+            int x = 0;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
+            conn.Open();
+            var cmd = new SqlCommand();
+            cmd.CommandText = "SELECT * FROM MyMags WHERE [user] = " + userName + " and title = '" + title + "'";
+            cmd.Connection = conn;
+            var reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    x = (int)reader["ID"];
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return x;
         }
     }
 }

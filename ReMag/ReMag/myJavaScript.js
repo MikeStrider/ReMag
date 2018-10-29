@@ -6,7 +6,22 @@
     $('.carousel').carousel({
         fullWidth: false,
         indicators: true,
-        padding:50
+        padding: 50,
+        onCycleTo: function (data) {
+            document.getElementById("hiddenID").value = data.children[0].getAttribute('src');;
+        }
+    });
+
+    $('.moveNextCarousel').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('.carousel').carousel('next');
+    });
+
+    $('.movePrevCarousel').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('.carousel').carousel('prev');
     });
 
     $.urlParam = function (name) {

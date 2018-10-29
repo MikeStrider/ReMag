@@ -39,10 +39,11 @@ namespace ReMag
                     Response.Redirect("default.aspx?ex=Y");
                 }
                 else {
-                    SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Profile] (name, email, [password]) VALUES (@username, @email, @password)", conn);
+                    SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Profile] (name, email, [password], image) VALUES (@username, @email, @password, @image)", conn);
                     da.SelectCommand.Parameters.AddWithValue("@email", email1.Value);
                     da.SelectCommand.Parameters.AddWithValue("@password", password1.Value);
                     da.SelectCommand.Parameters.AddWithValue("@username", username1.Value);
+                    da.SelectCommand.Parameters.AddWithValue("@image", "/images/nopreview.png");
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                     Session["LoggedIn"] = username1.Value;

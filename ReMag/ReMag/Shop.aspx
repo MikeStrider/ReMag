@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="ReMag.UserProfile" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Shop.aspx.cs" Inherits="ReMag.Shop" %>
 
 <!DOCTYPE html>
 
@@ -23,9 +23,9 @@
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="default.aspx">Home</a></li>
-                        <li class="active"><a href="UserProfile.aspx">Profile</a></li>
+                        <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
-                        <li><a href="Shop.aspx">Shop</a></li>
+                        <li class="active"><a href="Shop.aspx">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
@@ -34,59 +34,41 @@
             <ul class="sidenav" id="mobile-demo">
                 <li><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
-                <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
-                <li><a href="Shop.aspx">Shop</a></li>
+                <li><a href="MyMagazines.aspx">My Mags</a></li>
+                <li class="active"><a href="Shop.aspx">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
             <%----------%>
 
-            <%--Body--%>
-            <h3>Profile</h3>
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="name" runat="server" type="text" class="validate" />
-                    <label for="name">Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="telephone" runat="server" type="tel" class="validate" />
-                    <label for="telephone">Telephone</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">email</i>
-                    <input id="email" runat="server" type="email" class="validate" />
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">location_city</i>
-                    <input id="address" runat="server" type="text" class="validate" />
-                    <label for="address">AddressLine1</label>
-                </div>
-                <div style="left: 42px" class="input-field col s12">
-                    <input id="city" runat="server" type="text" class="validate" />
-                    <label for="city">City</label>
-                </div>
-                <div style="left: 42px" class="input-field col s6">
-                    <input id="state" runat="server" type="text" class="validate" />
-                    <label for="icon_city">State</label>
-                </div>
-                <div style="left: 42px" class="input-field col s6">
-                    <input id="zip" runat="server" type="text" class="validate" />
-                    <label for="zip">Zip</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">portrait</i>
-                    <input id="bio" runat="server" type="text" class="validate" />
-                    <label for="bio">Bio</label>
-                </div>
-                <div class="center input-field col s12">
-                    <a class="waves-effect waves-light btn" runat="server" onserverclick="Save_ServerClick"><i class="material-icons right">send</i>Save</a>
-                </div>
-            </div>
-            <div id="snackbar">Some text some message..</div>
-            <%--------%>
+            <%---BODY---%>
+            <h3>Shop</h3>
+            <p>List of Mags available to purchase.</p>
+
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("ID", "~/images.aspx?id={0}") %>'>
+                                <asp:Image ID="Image1" runat="server" Style="max-width: 120px; max-height: 120px" Height="200" ImageUrl='<%# Eval("image") %>' />
+                            </asp:HyperLink>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                    <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+                    <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                    <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
+                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" SelectCommand="SELECT MyMags.ID, MyMags.title, MyMags.image, MyMags.description, MyMags.type, MyMags.price, Profile.name FROM MyMags INNER JOIN Profile ON Profile.ID = MyMags.[user] WHERE (MyMags.posted = 'Y') AND (MyMags.retired = 'N')"></asp:SqlDataSource>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <%----------%>
 
             <%--Footer--%>
             <footer class="page-footer green lighten-2">
@@ -116,9 +98,7 @@
                 </div>
             </div>
             <%---------------%>
-
         </div>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
