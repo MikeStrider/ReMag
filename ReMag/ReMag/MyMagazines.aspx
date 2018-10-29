@@ -25,7 +25,7 @@
                         <li><a href="default.aspx">Home</a></li>
                         <li><a href="UserProfile.aspx">Profile</a></li>
                         <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
-                        <li><a href="badges.html">Shop</a></li>
+                        <li><a href="Shop.aspx">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
@@ -35,7 +35,7 @@
                 <li><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
                 <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
-                <li><a href="badges.html">Shop</a></li>
+                <li><a href="Shop.aspx">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
@@ -64,7 +64,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("ID", "~/images.aspx?id={0}") %>'>
-                                <asp:Image ID="Image1" runat="server" Width="200" ImageUrl='<%# Eval("image") %>' />
+                                <asp:Image ID="Image1" runat="server" Style="max-width: 120px; max-height: 120px" Height="200" ImageUrl='<%# Eval("image") %>' />
                             </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>

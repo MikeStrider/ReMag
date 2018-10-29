@@ -44,3 +44,6 @@ ReMag/ReMag/bin/roslyn/vbc.rsp
 ReMag/ReMag/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
+*.png
+*.pdb
+*.png
