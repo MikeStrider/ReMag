@@ -16,7 +16,6 @@ namespace ReMag
         protected void Page_Load(object sender, EventArgs e)
         {
             var literal = new LiteralControl();
-            IList<string> strList = new List<string>();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
             conn.Open();
             var cmd = new SqlCommand();
@@ -25,15 +24,44 @@ namespace ReMag
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
+                int counting = 0;
+                string currentitem = "blahh";
                 while (reader.Read())
                 {
+                    counting = counting + 1;
+                    currentitem = reader["path"].ToString();
                     literal.Text = literal.Text + "<div class='carousel-item'><img src='" + reader["path"].ToString() + "' /></div>";
+                }
+                if (counting == 2 )
+                {
+                    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
+                }
+                if (counting == 1)
+                {
+                    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
+                    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
                 }
             }
             reader.Close();
             conn.Close();
             ImagePlaceHolder.Controls.Add(literal);
+
+            conn.Open();
+            cmd.CommandText = "SELECT * FROM MyMags WHERE ID = '" + Request.QueryString["ID"] + "'";
+            cmd.Connection = conn;
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    details.Value = reader["description"].ToString();
+                    title.Value = reader["title"].ToString();
+                }
+            }
+            reader.Close();
+            conn.Close();
         }
+
         protected void UploadButton_Click(object sender, EventArgs e)
         {
             if (FileUploadControl.HasFile)
