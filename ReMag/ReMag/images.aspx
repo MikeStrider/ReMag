@@ -44,33 +44,20 @@
             <%----------%>
 
             <%--Body--%>
+            <h3>Images</h3>
             <div class="row">
-                <br />
-                <div class="input-field col s7">
-                    <i class="material-icons prefix">chrome_reader_mode</i>
-                    <input id="title" runat="server" type="text" readonly="Y" />
-                    <label for="title">Title</label>
+                <div class="input-field col s6">
+                    <asp:FileUpload ID="FileUploadControl" runat="server" />
+                    <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
                 </div>
+                <div class="input-field col s3">
+                    <asp:LinkButton ID="LinkButton2" class="waves-effect waves-light btn" runat="server" OnClick="Button1_Click1">Delete Center Image</asp:LinkButton>
+                </div>
+                <div class="input-field col s3">
+                    <asp:LinkButton ID="LinkButton3" class="waves-effect waves-light btn" runat="server" OnClick="LinkButton3_Click">Set As Primary</asp:LinkButton>
+                </div>
+                <input type="hidden" runat="server" id="hiddenID" value="3487" />
 
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">assignment</i>
-                    <input id="details" runat="server" type="text" readonly="Y" />
-                    <label for="details">Details</label>
-                </div>
-
-                <div id="useoptions">
-                    <div class="input-field col s6">
-                        <asp:FileUpload ID="FileUploadControl" runat="server" />
-                        <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
-                    </div>
-                    <div class="input-field col s3">
-                        <asp:LinkButton ID="LinkButton2" class="waves-effect waves-light btn" runat="server" OnClick="Button1_Click1">Delete Center Image</asp:LinkButton>
-                    </div>
-                    <div class="input-field col s3">
-                        <asp:LinkButton ID="LinkButton3" class="waves-effect waves-light btn" runat="server" OnClick="LinkButton3_Click">Set As Primary</asp:LinkButton>
-                    </div>
-                    <input type="hidden" runat="server" id="hiddenID" value="3487" />
-                </div>
                 <br />
                 <br />
                 <div class="carousel carousel-slider center" data-indicators="true">
@@ -100,6 +87,7 @@
                 </div>
             </footer>
             <%--Footer--%>
+        </div>
         </div>
     </form>
 

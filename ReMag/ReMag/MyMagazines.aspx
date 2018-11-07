@@ -100,6 +100,35 @@
             <div id="snackbar">Some text some message..</div>
             <%--------%>
 
+            <%--Footer--%>
+            <footer class="page-footer green lighten-2">
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2018 Copyright 
+                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                    </div>
+                </div>
+            </footer>
+            <%--Footer--%>
+
+            <%--Log Out Box--%>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <ul class="collapsible">
+                        <li class="active">
+                            <div class="collapsible-header"><i class="material-icons">filter_dramarama</i>Log Out</div>
+                            <div class="collapsible-body">
+                                <div class="modal-footer">
+                                    <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Logout_ServerClick">Confirm</a>
+                                    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <%---------------%>
+
             <%--Add New Mag Box--%>
             <div id="modal3" class="modal">
                 <div class="modal-content">
@@ -141,36 +170,6 @@
                 </div>
             </div>
             <%------------------%>
-
-            <%--Log Out Box--%>
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <ul class="collapsible">
-                        <li class="active">
-                            <div class="collapsible-header"><i class="material-icons">filter_dramarama</i>Log Out</div>
-                            <div class="collapsible-body">
-                                <div class="modal-footer">
-                                    <a runat="server" class="modal-close waves-effect waves-green btn-flat" onserverclick="Logout_ServerClick">Confirm</a>
-                                    <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <%---------------%>
-
-            <%--Footer--%>
-            <footer class="page-footer green lighten-2">
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
-                    </div>
-                </div>
-            </footer>
-            <%--Footer--%>
-
         </div>
 
     </form>

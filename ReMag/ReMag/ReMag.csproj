@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
+    <Content Include="footer.html" />
+    <Content Include="header.html" />
     <Content Include="HelpPage.aspx" />
     <Content Include="images.aspx" />
     <Content Include="myJavaScript.js" />
