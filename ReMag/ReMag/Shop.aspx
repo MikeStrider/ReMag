@@ -50,7 +50,7 @@
                     <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("ID", "~/images.aspx?id={0}") %>'>
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("ID", "~/images.aspx?id={0}&vo=Y") %>'>
                                 <asp:Image ID="Image1" runat="server" Style="max-width: 120px; max-height: 120px" Height="200" ImageUrl='<%# Eval("image") %>' />
                             </asp:HyperLink>
                         </ItemTemplate>
@@ -70,17 +70,6 @@
             <br />
             <%----------%>
 
-            <%--Footer--%>
-            <footer class="page-footer green lighten-2">
-                <div class="footer-copyright">
-                    <div class="container">
-                        © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
-                    </div>
-                </div>
-            </footer>
-            <%--Footer--%>
-
             <%--Log Out Box--%>
             <div id="modal2" class="modal">
                 <div class="modal-content">
@@ -98,7 +87,20 @@
                 </div>
             </div>
             <%---------------%>
+
+            <%--Footer--%>
+            <footer class="page-footer green lighten-2">
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2018 Copyright 
+                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                    </div>
+                </div>
+            </footer>
+            <%--Footer--%>
         </div>
+
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

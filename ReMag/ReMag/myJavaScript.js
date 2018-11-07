@@ -85,8 +85,7 @@
         x.className = "show";
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
     }
-
+    if ($.urlParam('vo') == 'Y') {
+        document.getElementById("useoptions").style.display = "none";
+    }
 });
-
-
-

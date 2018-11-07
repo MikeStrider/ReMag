@@ -70,7 +70,7 @@
                 </div>
                 <div style="left: 42px" class="input-field col s6">
                     <input id="state" runat="server" type="text" class="validate" />
-                    <label for="icon_city">State</label>
+                    <label for="state">State</label>
                 </div>
                 <div style="left: 42px" class="input-field col s6">
                     <input id="zip" runat="server" type="text" class="validate" />
