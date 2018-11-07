@@ -15,3 +15,7 @@ So far the site looks like this.  DB is accessable via Azure.
 and 
 
 ![alt text](https://github.com/MikeStrider/ReMag/blob/master/ReMag/Design%20Concepts/2018-10-09_22-21-58.png)
+
+and 
+
+![alt text](https://github.com/MikeStrider/ReMag/blob/master/ReMag/ReMag/images/2018-11-06_21-14-26.jpg)
