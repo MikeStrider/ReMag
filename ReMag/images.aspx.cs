@@ -19,7 +19,7 @@ namespace ReMag
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
             conn.Open();
             var cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM images WHERE MagID = '" + Request.QueryString["ID"] + "'";
+            cmd.CommandText = "SELECT * FROM images WHERE MagID = '" + Request.QueryString["ProfileID"] + "'";
             cmd.Connection = conn;
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -47,7 +47,7 @@ namespace ReMag
             ImagePlaceHolder.Controls.Add(literal);
 
             conn.Open();
-            cmd.CommandText = "SELECT * FROM MyMags WHERE ID = '" + Request.QueryString["ID"] + "'";
+            cmd.CommandText = "SELECT * FROM MyMags WHERE ID = '" + Request.QueryString["ProfileID"] + "'";
             cmd.Connection = conn;
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -69,12 +69,12 @@ namespace ReMag
                 string filename = Path.GetFileName(FileUploadControl.FileName);
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
                 SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [images] (MagID, path) VALUES (@ID, @path)", conn);
-                da.SelectCommand.Parameters.AddWithValue("@ID", Request.QueryString["ID"]);
+                da.SelectCommand.Parameters.AddWithValue("@MagID", Request.QueryString["ProfileID"]);
                 da.SelectCommand.Parameters.AddWithValue("@path", "/images/" + filename);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 FileUploadControl.SaveAs(Server.MapPath("/images/") + filename);
-                Response.Redirect("images.aspx?up=Y&id=" + Request.QueryString["ID"]);
+                Response.Redirect("images.aspx?up=Y&id=" + Request.QueryString["ProfileID"]);
             }
         }
 
@@ -87,7 +87,7 @@ namespace ReMag
                 DataSet ds = new DataSet();
                 da.Fill(ds);
             }
-            Response.Redirect("images.aspx?id=" + Request.QueryString["ID"]);
+            Response.Redirect("images.aspx?id=" + Request.QueryString["ProfileID"]);
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace ReMag
             string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(CS))
             {
-                SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET [image] = '" + Request.Form["hiddenID"] + "' WHERE ID = '" + Request.QueryString["ID"] + "'", conn);
+                SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET [image] = '" + Request.Form["hiddenID"] + "' WHERE MagID = '" + Request.QueryString["ProfileID"] + "'", conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
             }

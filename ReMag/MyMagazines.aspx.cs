@@ -30,12 +30,12 @@ namespace ReMag
                 Response.Redirect("default.aspx?dn=Y");
             }
 
-            if (!String.IsNullOrEmpty(Request.QueryString["id"]))
+            if (!String.IsNullOrEmpty(Request.QueryString["ProfileID"]))
             {
                 string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(CS))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y' WHERE ID = '" + Request.QueryString["id"] + "'", conn);
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y' WHERE ID = '" + Request.QueryString["ProfileID"] + "'", conn);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
@@ -140,7 +140,7 @@ namespace ReMag
             {
                 while (reader.Read())
                 {
-                    x = (int)reader["ID"];
+                    x = (int)reader["ProfileID"];
                 }
             }
             reader.Close();

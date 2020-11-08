@@ -94,7 +94,7 @@ namespace ReMag
             {
                 while (reader.Read())
                 {
-                    x = reader["ID"].ToString();
+                    x = reader["ProfileID"].ToString();
                 }
             }
             reader.Close();
