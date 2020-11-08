@@ -35,7 +35,7 @@ namespace ReMag
                 string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(CS))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y' WHERE ID = '" + Request.QueryString["ProfileID"] + "'", conn);
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y' WHERE MagID = '" + Request.QueryString["ProfileID"] + "'", conn);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
@@ -45,7 +45,7 @@ namespace ReMag
                 string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(CS))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET posted = 'Y' WHERE ID = '" + Request.QueryString["pid"] + "'", conn);
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET posted = 'Y' WHERE MagID = '" + Request.QueryString["pid"] + "'", conn);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
@@ -85,8 +85,8 @@ namespace ReMag
 
             int magID = GetMagID((string)Session["LoggedInID"], txtTitle.Value);
 
-            SqlDataAdapter da2 = new SqlDataAdapter("INSERT INTO [images] ([MagID], [path]) VALUES (@ID, @path)", conn);
-            da2.SelectCommand.Parameters.AddWithValue("@ID", magID);
+            SqlDataAdapter da2 = new SqlDataAdapter("INSERT INTO [images] ([MagID], [path]) VALUES (@MagID, @path)", conn);
+            da2.SelectCommand.Parameters.AddWithValue("@MagID", magID);
             da2.SelectCommand.Parameters.AddWithValue("@path", "/images/nopreview.png");
             DataSet ds2 = new DataSet();
             da2.Fill(ds2);
@@ -140,7 +140,7 @@ namespace ReMag
             {
                 while (reader.Read())
                 {
-                    x = (int)reader["ProfileID"];
+                    x = (int)reader["MagID"];
                 }
             }
             reader.Close();

@@ -60,10 +60,10 @@
                 DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
                 OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                    <asp:BoundField DataField="MagID" HeaderText="MagID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("ID", "~/images.aspx?id={0}") %>'>
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("MagID", "~/images.aspx?id={0}") %>'>
                                 <asp:Image ID="Image1" runat="server" Style="max-width: 120px; max-height: 120px" Height="200" ImageUrl='<%# Eval("image") %>' />
                             </asp:HyperLink>
                         </ItemTemplate>
@@ -75,12 +75,12 @@
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("ID", "~/MyMagazines.aspx?id={0}") %>' Text="retire"></asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?id={0}") %>' Text="retire"></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("ID", "~/MyMagazines.aspx?pid={0}") %>' Text="post"></asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?pid={0}") %>' Text="post"></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -88,7 +88,7 @@
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>"
-                SelectCommand="SELECT ID, title, posted, retired, image, description, type, [user], price FROM MyMags WHERE ([user] = @userID) and retired = @retired ORDER BY ID DESC">
+                SelectCommand="SELECT MagID, title, posted, retired, image, description, type, [user], price FROM MyMags WHERE ([user] = @userID) and retired = @retired ORDER BY MagID DESC">
                 <SelectParameters>
                     <asp:SessionParameter Name="userID" SessionField="LoggedInID" />
                     <asp:ControlParameter ControlID="ddl_Retired" Name="retired" PropertyName="SelectedValue" />
