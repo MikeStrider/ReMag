@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HelpPage.aspx.cs" Inherits="ReMag.HelpPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HelpPage.aspx.cs" Inherits="ReMag.HelpPage" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMagazines.aspx.cs" Inherits="ReMag.MyMagazines" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyMagazines.aspx.cs" Inherits="ReMag.MyMagazines" %>
 
 <!DOCTYPE html>
 

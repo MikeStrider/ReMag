@@ -3,3 +3,7 @@
 ################################################################################
 
 /ReMag/packages
+/ReMag/ReMag/bin/roslyn
+/packages
+/ReMag/bin
+/ReMag/obj

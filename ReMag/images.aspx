@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="images.aspx.cs" Inherits="ReMag.images" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="images.aspx.cs" Inherits="ReMag.images" %>
 
 <!DOCTYPE html>
 
