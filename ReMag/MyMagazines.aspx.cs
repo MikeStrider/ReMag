@@ -13,6 +13,8 @@ namespace ReMag
 {
     public partial class MyMagazines : System.Web.UI.Page
     {
+        string magID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoggedIn"] != null)
@@ -30,27 +32,57 @@ namespace ReMag
                 Response.Redirect("default.aspx?dn=Y");
             }
 
-            if (!String.IsNullOrEmpty(Request.QueryString["ProfileID"]))
+            // retire mag
+            if (!String.IsNullOrEmpty(Request.QueryString["ret"]))
             {
+                magID = Request.QueryString["ret"];
                 string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(CS))
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y' WHERE MagID = '" + Request.QueryString["ProfileID"] + "'", conn);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                }
-            }
-            if (!String.IsNullOrEmpty(Request.QueryString["pid"]))
-            {
-                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
-                using (SqlConnection conn = new SqlConnection(CS))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET posted = 'Y' WHERE MagID = '" + Request.QueryString["pid"] + "'", conn);
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'Y', posted = 'N' WHERE MagID = '" + magID + "'", conn);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
             }
 
+            // unretire
+            if (!String.IsNullOrEmpty(Request.QueryString["unret"]))
+            {
+                magID = Request.QueryString["unret"];
+                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(CS))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET retired = 'N', posted = 'N' WHERE MagID = '" + magID + "'", conn);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                }
+            }
+
+            // post the mag
+            if (!String.IsNullOrEmpty(Request.QueryString["pid"]))
+            {
+                magID = Request.QueryString["pid"];
+                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(CS))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET posted = 'Y' WHERE MagID = '" + magID + "'", conn);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                }
+            }
+
+            // unpost the mag
+            if (!String.IsNullOrEmpty(Request.QueryString["uid"]))
+            {
+                magID = Request.QueryString["uid"];
+                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(CS))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET posted = 'N' WHERE MagID = '" + magID + "'", conn);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                }
+            }
         }
 
         protected void Logout_ServerClick(object sender, EventArgs e)
@@ -107,25 +139,42 @@ namespace ReMag
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    if(e.Row.Cells[5].Text == "Y")
-            //    {
-            //        //HyperLink hyp = new HyperLink();
-            //        //hyp.ID = "hypID";
-            //        //hyp.NavigateUrl = e.Row.Cells[1].Text;
-            //        //hyp.Text = "post load";
-            //        //e.Row.Cells[8].Controls.Add(hyp);
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[5].Text == "Y")
+                {
+                    HyperLink hyp = new HyperLink();
+                    hyp.ID = "unPostBtn";
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?uid=" + e.Row.Cells[0].Text;
+                    hyp.Text = "unpost";
+                    hyp.CssClass = "waves-effect waves-light btn";
+                    e.Row.Cells[8].Controls.Add(hyp);
+                } else {
+                    HyperLink hyp = new HyperLink();
+                    hyp.ID = "unPostBtn";
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?pid=" + e.Row.Cells[0].Text;
+                    hyp.Text = "post";
+                    hyp.CssClass = "waves-effect waves-light btn";
+                    e.Row.Cells[8].Controls.Add(hyp);
+                }
 
-            //        Image imgg = new Image();
-            //        imgg.ID = "imageID";
-            //        imgg.ImageUrl = e.Row.Cells[1].Text;
-            //        imgg.Width = 100;
-            //        e.Row.Cells[8].Controls.Add(imgg);
-
-
-            //    }
-            //}
+                if (e.Row.Cells[6].Text == "Y")
+                {
+                    HyperLink hyp = new HyperLink();
+                    hyp.ID = "unRetireBtn";
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?unret=" + e.Row.Cells[0].Text;
+                    hyp.Text = "unretire";
+                    hyp.CssClass = "waves-effect waves-light btn";
+                    e.Row.Cells[9].Controls.Add(hyp);
+                } else {
+                    HyperLink hyp = new HyperLink();
+                    hyp.ID = "retireBtn";
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?ret=" + e.Row.Cells[0].Text;
+                    hyp.Text = "retire";
+                    hyp.CssClass = "waves-effect waves-light btn";
+                    e.Row.Cells[9].Controls.Add(hyp);
+                }
+            }
         }
         protected int GetMagID(string userName, string title)
         {

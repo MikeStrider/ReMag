@@ -72,15 +72,16 @@
                     <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
                     <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
                     <asp:BoundField DataField="posted" HeaderText="posted" SortExpression="posted" />
+                    <asp:BoundField DataField="retired" HeaderText="retired" SortExpression="retired" />
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?id={0}") %>' Text="retire"></asp:HyperLink>
+<%--                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?ret={0}") %>' Text="retire"></asp:HyperLink>--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?pid={0}") %>' Text="post"></asp:HyperLink>
+<%--                            <asp:HyperLink ID="HyperLink1" runat="server" class="waves-effect waves-light btn" NavigateUrl='<%# Eval("MagID", "~/MyMagazines.aspx?pid={0}") %>' Text="post"></asp:HyperLink>--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

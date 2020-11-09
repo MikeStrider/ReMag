@@ -24,6 +24,27 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ReMag(1)", "ReMag\", "{E494
 		SlnRelativePath = "ReMag\"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MySite", "..\MySite\", "{AB33D000-CCBA-484C-AEDC-36D7C94656FC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62905"
+		Debug.AspNetCompiler.PhysicalPath = "..\MySite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62905\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62905"
+		Release.AspNetCompiler.PhysicalPath = "..\MySite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62905\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62905"
+		SlnRelativePath = "..\MySite\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +52,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E4942302-77B4-4A89-A661-FEFF9C1BA9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4942302-77B4-4A89-A661-FEFF9C1BA9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB33D000-CCBA-484C-AEDC-36D7C94656FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB33D000-CCBA-484C-AEDC-36D7C94656FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
