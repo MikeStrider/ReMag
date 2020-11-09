@@ -22,21 +22,23 @@
                     <a href="default.aspx" class="brand-logo">ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="default.aspx">Home</a></li>
-                        <li class="active"><a href="UserProfile.aspx">Profile</a></li>
+                        <li class="active"><a href="default.aspx">Home</a></li>
+                        <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
                         <li><a href="collapsible.html">Explore</a></li>
+                        <li><a href="Chat.aspx">Chat</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
                 </div>
             </nav>
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="default.aspx">Home</a></li>
+                <li class="active"><a href="default.aspx">Home</a></li>
                 <li><a href="UserProfile.aspx">Profile</a></li>
-                <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
+                <li><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="Shop.aspx">Shop</a></li>
                 <li><a href="collapsible.html">Explore</a></li>
+                <li><a href="Chat.aspx">Chat</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
             <%----------%>
@@ -79,9 +81,15 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">portrait</i>
                     <input id="bio" runat="server" type="text" class="validate" />
-                    <label for="bio">Bio</label>
+                   <label for="bio">Bio</label>
                 </div>
                 <div class="center input-field col s12">
+                    <label>
+                        <input type="checkbox" id="chk_emailme" class="filled-in" runat="server" />
+                        <span style="color: black">Email Me when a New Mag is Posted</span>
+                    </label>
+                    <br />
+                    <br />
                     <a class="waves-effect waves-light btn" runat="server" onserverclick="Save_ServerClick"><i class="material-icons right">send</i>Save</a>
                 </div>
             </div>

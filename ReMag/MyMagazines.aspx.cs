@@ -69,6 +69,34 @@ namespace ReMag
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
+
+                var x = "no title";
+                var y = "no description";
+                SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
+                conn2.Open();
+                var cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM MyMags WHERE [ID] = " + Request.QueryString["pid"];
+                cmd.Connection = conn2;
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        x = (string)reader["title"];
+                        y = (string)reader["description"];
+                    }
+                }
+                reader.Close();
+                conn2.Close();
+
+                SendMail senderObject = new SendMail();
+                List<string> myList = senderObject.GetSubscribedEmails(); // adds all emails to a List<string>
+                senderObject.SendNewMagEmailNow(myList,            // sends list to sender object
+                    "New Mag available on ReMag",
+                    "<h1>New Mag available on ReMag</h1>A user of Remag has posted a new magazine.  Go to <a href=\"http://remag.mstrongcreates.com\">remag.mstrongcreates.com</a> to view.<br><br><b>title:</b> " + x + "<br><b>description:</b> " + y,
+                    Request.QueryString["pid"],
+                    Session["LoggedIn"].ToString());
+
             }
 
             // unpost the mag

@@ -30,6 +30,7 @@ namespace ReMag
 
             if (!IsPostBack)
             {
+                var isChecked = "N";
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
                 conn.Open();
                 var cmd = new SqlCommand();
@@ -47,19 +48,31 @@ namespace ReMag
                         telephone.Value = reader["telephone"].ToString();
                         city.Value = reader["city"].ToString();
                         zip.Value = reader["zip"].ToString();
+                        isChecked = reader["getnewmags"].ToString();
                     }
                 }
                 reader.Close();
                 conn.Close();
+                if (isChecked == "Y")
+                {
+                    chk_emailme.Checked = true;
+                }
             }
         }
 
         protected void Save_ServerClick(object sender, EventArgs e)
         {
+            string isChecked;
+            if (chk_emailme.Checked == true)
+            {
+                isChecked = "Y";
+            } else {
+                isChecked = "N";
+            }
             string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(CS))
             {
-                SqlDataAdapter da = new SqlDataAdapter("UPDATE Profile SET email = @email, telephone = @telephone, name = @name, address = @address, city = @city, zip = @zip, bio = @bio WHERE name = '" + (String)Session["LoggedIn"] + "'", conn);
+                SqlDataAdapter da = new SqlDataAdapter("UPDATE Profile SET email = @email, telephone = @telephone, name = @name, address = @address, city = @city, zip = @zip, bio = @bio, getnewmags = @getnewmags WHERE name = '" + (String)Session["LoggedIn"] + "'", conn);
                 da.SelectCommand.Parameters.AddWithValue("@name", name.Value);
                 da.SelectCommand.Parameters.AddWithValue("@email", email.Value);
                 da.SelectCommand.Parameters.AddWithValue("@telephone", telephone.Value);
@@ -67,6 +80,7 @@ namespace ReMag
                 da.SelectCommand.Parameters.AddWithValue("@city", city.Value);
                 da.SelectCommand.Parameters.AddWithValue("@zip", zip.Value);
                 da.SelectCommand.Parameters.AddWithValue("@bio", bio.Value);
+                da.SelectCommand.Parameters.AddWithValue("@getnewmags", isChecked);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
             }
