@@ -65,7 +65,7 @@
                     <asp:BoundField DataField="MagID" HeaderText="MagID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("MagID", "~/images.aspx?id={0}") %>'>
+                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl='<%# Eval("MagID", "~/images2.aspx?id={0}") %>'>
                                 <asp:Image ID="Image1" runat="server" Style="max-width: 120px; max-height: 120px" Height="200" ImageUrl='<%# Eval("image") %>' />
                             </asp:HyperLink>
                         </ItemTemplate>
@@ -168,7 +168,7 @@
                 <div class="footer-copyright">
                     <div class="container">
                         © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                        <a class="grey-text text-lighten-4 right" href="index.aspx">Michael Strong <u>about me</u></a>
                     </div>
                 </div>
             </footer>

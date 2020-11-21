@@ -75,7 +75,7 @@ namespace ReMag
                 SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
                 conn2.Open();
                 var cmd = new SqlCommand();
-                cmd.CommandText = "SELECT * FROM MyMags WHERE [ID] = " + Request.QueryString["pid"];
+                cmd.CommandText = "SELECT * FROM MyMags WHERE [MagID] = " + Request.QueryString["pid"];
                 cmd.Connection = conn2;
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -110,6 +110,8 @@ namespace ReMag
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
+                MySharedClasses sharedObject = new MySharedClasses();
+                sharedObject.Log(magID, Session["LoggedIn"].ToString(), "mag un-posted");
             }
         }
 

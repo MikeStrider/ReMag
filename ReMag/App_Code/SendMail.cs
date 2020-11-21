@@ -51,23 +51,16 @@ public class SendMail
                     smtp.Host = "smtp.gmail.com";
                     smtp.EnableSsl = true;
                     mm.IsBodyHtml = true;
-                    NetworkCredential networkcred = new NetworkCredential("noreply.remag@gmail.com", "remag12#$");
+                    NetworkCredential networkcred = new NetworkCredential("noreply.remag@gmail.com", Globals.emailPassword);
                     smtp.UseDefaultCredentials = true;
                     smtp.Credentials = networkcred;
                     smtp.Port = 587;
                     smtp.Send(mm);
                 }
+                MySharedClasses sharedObject = new MySharedClasses();
+                sharedObject.Log(magID, userID, "mag posted");
+
             }
         }
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Logging] ([UDDateTime], [Type], [Info], UserName) VALUES (@datetime, @type, @info, @UserName)", conn);
-        da.SelectCommand.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("MM-dd-yyyy h:mm:ss tt"));
-        da.SelectCommand.Parameters.AddWithValue("@type", "mag posted");
-        da.SelectCommand.Parameters.AddWithValue("@info", "magID: " + magID);
-        da.SelectCommand.Parameters.AddWithValue("@UserName", userID);
-        DataSet ds = new DataSet();
-        da.Fill(ds);
-        conn.Close();
     }
 }

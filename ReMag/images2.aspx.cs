@@ -25,24 +25,7 @@ namespace ReMag
             cmd.Connection = conn;
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
-            {
-                //int counting = 0;
-                //string currentitem = "blahh";
-                //while (reader.Read())
-                //{
-                //    counting = counting + 1;
-                //    currentitem = reader["path"].ToString();
-                //    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + reader["path"].ToString() + "' /></div>";
-                //}
-                //if (counting == 2)
-                //{
-                //    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
-                //}
-                //if (counting == 1)
-                //{
-                //    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
-                //    literal.Text = literal.Text + "<div class='carousel-item'><img src='" + currentitem + "' /></div>";
-                //}
+            { 
                 while (reader.Read())
                 {
                     literal.Text = literal.Text + "<img class='responsive-img materialboxed' width='300' src='" + reader["path"].ToString() + "' />";
@@ -54,7 +37,7 @@ namespace ReMag
             ImagePlaceHolder.Controls.Add(literal);
 
             conn.Open();
-            cmd.CommandText = "SELECT * FROM MyMags JOIN Profile ON Profile.ID = MyMags.[user] WHERE MyMags.ID = '" + Request.QueryString["ID"] + "'";
+            cmd.CommandText = "SELECT * FROM MyMags JOIN Profile ON Profile.ProfileID = MyMags.[user] WHERE MyMags.MagID = '" + Request.QueryString["ID"] + "'";
             cmd.Connection = conn;
             reader = cmd.ExecuteReader();
             if (reader.HasRows)

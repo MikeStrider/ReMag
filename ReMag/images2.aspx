@@ -14,19 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
-        /*.carousel {
-            height: 900px;
-        }
-
-        .carousel-item img {
-            height: 100%;
-        }*/
-
-        .container2 {
+        .container3 {
             display: flex;
             flex-wrap: wrap;
         }
-
         .material-placeholder {
             padding: 5px;
         }
@@ -59,7 +50,7 @@
                 <li><a href="UserProfile.aspx">Profile</a></li>
                 <li class="active"><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="Shop.aspx">Shop</a></li>
-                <li><a href="collapsible.html">Explore</a></li>
+                <li><a href="explore.aspx">Explore</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
             <%----------%>
@@ -94,39 +85,29 @@
                     </div>
                     <input type="hidden" runat="server" id="hiddenID" value="3487" />
                 </div>
-                <%--                <div class="carousel carousel-slider center" data-indicators="true">
-                    <div class="carousel-fixed-item center middle-indicator">
-                        <div class="left">
-                            <a href="Previo" class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons left  middle-indicator-text">chevron_left</i></a>
-                        </div>
-                        <div class="right">
-                            <a href="Siguiente" class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons right middle-indicator-text">chevron_right</i></a>
-                        </div>
-                    </div>
-                    <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
-                </div>--%>
+            </div>
+            <div class="row">
                 <br />
                 <div class="container3">
-                    <div class="container2">
-                        <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
-                    </div>
+                    <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
                 </div>
                 <br />
                 <div id="snackbar">Some text some message..</div>
-
-                <%--------%>
-
-                <%--Footer--%>
-                <footer class="page-footer green lighten-2">
-                    <div class="footer-copyright">
-                        <div class="container">
-                            © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
-                        </div>
-                    </div>
-                </footer>
-                <%--Footer--%>
             </div>
+
+            <%--------%>
+
+            <%--Footer--%>
+            <footer class="page-footer green lighten-2">
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2018 Copyright 
+                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                    </div>
+                </div>
+            </footer>
+            <%--Footer--%>
+        </div>
     </form>
 
     <script src="frameworks\js\materialize.min.js"></script>

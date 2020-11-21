@@ -34,7 +34,7 @@ v    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materia
                         <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
-                        <li><a href="collapsible.html">Explore</a></li>
+                        <li><a href="Explore.aspx">Explore</a></li>
                         <li><a href="Chat.aspx">Chat</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
@@ -45,7 +45,7 @@ v    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materia
                 <li><a href="UserProfile.aspx">Profile</a></li>
                 <li><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="Shop.aspx">Shop</a></li>
-                <li><a href="collapsible.html">Explore</a></li>
+                <li><a href="Explore.aspx">Explore</a></li>
                 <li><a href="Chat.aspx">Chat</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>

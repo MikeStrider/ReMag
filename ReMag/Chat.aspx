@@ -27,7 +27,7 @@
                         <li><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
-                        <li><a href="collapsible.html">Explore</a></li>
+                        <li><a href="Explore.aspx">Explore</a></li>
                         <li><a href="Chat.aspx">Chat</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
@@ -38,7 +38,7 @@
                 <li><a href="UserProfile.aspx">Profile</a></li>
                 <li><a href="MyMagazines.aspx">My Mags</a></li>
                 <li><a href="Shop.aspx">Shop</a></li>
-                <li><a href="collapsible.html">Explore</a></li>
+                <li><a href="Explore.aspx">Explore</a></li>
                 <li><a href="Chat.aspx">Chat</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
@@ -108,7 +108,7 @@
                 <div class="footer-copyright">
                     <div class="container">
                         © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                        <a class="grey-text text-lighten-4 right" href="index.aspx">Michael Strong <u>about me</u></a>
                     </div>
                 </div>
             </footer>
