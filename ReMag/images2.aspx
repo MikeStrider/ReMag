@@ -77,12 +77,9 @@
                         <asp:FileUpload ID="FileUploadControl" runat="server" />
                         <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
                     </div>
-                    <div class="input-field col s3">
-                        <asp:LinkButton ID="LinkButton2" class="waves-effect waves-light btn" runat="server" OnClick="Button1_Click1">Delete Center Image</asp:LinkButton>
-                    </div>
-                    <div class="input-field col s3">
+<%--                    <div class="input-field col s3">
                         <asp:LinkButton ID="LinkButton3" class="waves-effect waves-light btn" runat="server" OnClick="LinkButton3_Click">Set Last Viewed Image as Primary</asp:LinkButton>
-                    </div>
+                    </div>--%>
                     <input type="hidden" runat="server" id="hiddenID" value="3487" />
                 </div>
             </div>
@@ -101,8 +98,8 @@
             <footer class="page-footer green lighten-2">
                 <div class="footer-copyright">
                     <div class="container">
-                        © 2018 Copyright 
-                        <a class="grey-text text-lighten-4 right" href="https://mikestrong7.wixsite.com/about">Michael Strong</a>
+                        © 2020 Copyright 
+                        <a class="grey-text text-lighten-4 right" href="index.aspx">Michael Strong <u>about me</u></a>
                     </div>
                 </div>
             </footer>
@@ -123,6 +120,8 @@
             let closest = event.target.closest(selector);
             document.getElementById("hiddenID").value = closest.getAttribute('src');
         });
+
+
 
     </script>
 </body>

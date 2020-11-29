@@ -28,7 +28,9 @@ namespace ReMag
             { 
                 while (reader.Read())
                 {
-                    literal.Text = literal.Text + "<img class='responsive-img materialboxed' width='300' src='" + reader["path"].ToString() + "' />";
+                    literal.Text = literal.Text + "<img data-path='" + reader["path"].ToString() + "' class='responsive-img materialboxed' width='300' src='" + reader["path"].ToString() + "' />";
+                    //<div><a href='MyMagazines.aspx?id=" + Request.QueryString["ID"] + "&deleteme=1>Delete</a><div></div>";
+                    //literal.Text = literal.Text + "<asp:LinkButton ID = 'LinkButton2' class='waves-effect waves-light btn' runat='server' OnClick='Button1_Click1'>Delete Center Image</asp:LinkButton>";
                 }
 
             }
@@ -65,11 +67,11 @@ namespace ReMag
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 FileUploadControl.SaveAs(Server.MapPath("/images/") + filename);
-                Response.Redirect("images.aspx?up=Y&id=" + Request.QueryString["ID"]);
+                Response.Redirect("images2.aspx?up=Y&id=" + Request.QueryString["ID"]);
             }
             else
             {
-                Response.Redirect("images.aspx?up=N&id=" + Request.QueryString["ID"]);
+                Response.Redirect("images2.aspx?up=N&id=" + Request.QueryString["ID"]);
             }
         }
 
@@ -77,7 +79,7 @@ namespace ReMag
         {
             if (IsImageLeftwithOne() == "true")
             {
-                Response.Redirect("images.aspx?id=" + Request.QueryString["ID"] + "&nodelete=1");
+                Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"] + "&nodelete=1");
             }
             else
             {
@@ -88,7 +90,7 @@ namespace ReMag
                     DataSet ds = new DataSet();
                     da.Fill(ds);
                 }
-                Response.Redirect("images.aspx?id=" + Request.QueryString["ID"]);
+                Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"]);
             }
         }
 
