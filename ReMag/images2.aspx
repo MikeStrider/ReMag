@@ -74,8 +74,8 @@
 
                 <div id="useoptions">
                     <div class="input-field col s6">
-                        <asp:FileUpload ID="FileUploadControl" runat="server" />
                         <asp:LinkButton ID="LinkButton1" class="waves-effect waves-light btn" runat="server" OnClick="UploadButton_Click">Upload</asp:LinkButton>
+                        <asp:FileUpload ID="FileUploadControl" runat="server" />
                     </div>
 <%--                    <div class="input-field col s3">
                         <asp:LinkButton ID="LinkButton3" class="waves-effect waves-light btn" runat="server" OnClick="LinkButton3_Click">Set Last Viewed Image as Primary</asp:LinkButton>
@@ -87,6 +87,10 @@
                 <br />
                 <div class="container3">
                     <asp:PlaceHolder ID="ImagePlaceHolder" runat="server" />
+                </div>
+                <br />
+                <div>
+                    <asp:PlaceHolder ID="PlaceHolder2" runat="server" />
                 </div>
                 <br />
                 <div id="snackbar">Some text some message..</div>
@@ -113,13 +117,13 @@
         var gallery = document.querySelectorAll('.materialboxed');
         M.Materialbox.init(gallery, {});
 
-        var base = document.querySelector('.container2');
+        var base = document.querySelector('.container3');
         var selector = '.responsive-img ';
 
-        base.addEventListener('click', function (event) {
-            let closest = event.target.closest(selector);
-            document.getElementById("hiddenID").value = closest.getAttribute('src');
-        });
+        //base.addEventListener('click', function (event) {
+        //    let closest = event.target.closest(selector);
+        //    document.getElementById("hiddenID").value = closest.getAttribute('src');
+        //});
 
 
 

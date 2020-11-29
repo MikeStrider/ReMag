@@ -17,7 +17,11 @@ namespace ReMag
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string imageOwner = "0";
+            List<string> imageIDs = new List<string>();
+            List<string> paths = new List<string>();
             var literal = new LiteralControl();
+            var literalDeleteImage = new LiteralControl();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
             conn.Open();
             var cmd = new SqlCommand();
@@ -28,9 +32,9 @@ namespace ReMag
             { 
                 while (reader.Read())
                 {
-                    literal.Text = literal.Text + "<img data-path='" + reader["path"].ToString() + "' class='responsive-img materialboxed' width='300' src='" + reader["path"].ToString() + "' />";
-                    //<div><a href='MyMagazines.aspx?id=" + Request.QueryString["ID"] + "&deleteme=1>Delete</a><div></div>";
-                    //literal.Text = literal.Text + "<asp:LinkButton ID = 'LinkButton2' class='waves-effect waves-light btn' runat='server' OnClick='Button1_Click1'>Delete Center Image</asp:LinkButton>";
+                    literal.Text = literal.Text + "<img class='responsive-img materialboxed' width='300' src='" + reader["path"].ToString() + "' />";
+                    imageIDs.Add(reader["imageID"].ToString());
+                    paths.Add(reader["path"].ToString());
                 }
 
             }
@@ -38,6 +42,7 @@ namespace ReMag
             conn.Close();
             ImagePlaceHolder.Controls.Add(literal);
 
+            // if mag owner do things
             conn.Open();
             cmd.CommandText = "SELECT * FROM MyMags JOIN Profile ON Profile.ProfileID = MyMags.[user] WHERE MyMags.MagID = '" + Request.QueryString["ID"] + "'";
             cmd.Connection = conn;
@@ -48,11 +53,59 @@ namespace ReMag
                 {
                     details.Value = reader["description"].ToString();
                     title.Value = reader["title"].ToString();
-                    lbl_contactme.Text = "<br> To purchase, contact " + reader["name"].ToString() + " by emailing " + reader["email"].ToString() + ".";
+                    imageOwner = reader["user"].ToString();
+                    if (imageOwner != Session["LoggedInID"].ToString())
+                    {
+                        lbl_contactme.Text = "<br> To purchase, contact " + reader["name"].ToString() + " by emailing " + reader["email"].ToString() + ".";
+                    } else
+                    {
+                        lbl_contactme.Text = "You own this magazine.";
+                        var imageCounter = 0;
+                        for (var x = 0; x < imageIDs.Count ; x++)
+                        {
+                            imageCounter = imageCounter + 1;
+                            literalDeleteImage.Text = literalDeleteImage.Text + " / <a href = 'images2.aspx?id=" + Request.QueryString["ID"] + "&deleteme=" + imageIDs[x] + "'>Delete Image " + imageCounter + 
+                                "</a> / <a href = 'images2.aspx?id=" + Request.QueryString["ID"] + "&setPrim=" + paths[x] + "'>Set Image " + imageCounter + " as Primary </a>";
+                        }
+                        PlaceHolder2.Controls.Add(literalDeleteImage);
+                    }
                 }
             }
             reader.Close();
             conn.Close();
+
+            // delete the mag image
+            if (!String.IsNullOrEmpty(Request.QueryString["deleteme"]))
+            {
+                if (IsImageLeftwithOne() == "true")
+                {
+                    Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"] + "&nodelete=1");
+                }
+                else
+                {
+                    string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
+                    using (SqlConnection conn2 = new SqlConnection(CS))
+                    {
+                        SqlDataAdapter da = new SqlDataAdapter("DELETE FROM [images] WHERE ImageID = '" + Request.QueryString["deleteme"] + "'", conn2);
+                        DataSet ds = new DataSet();
+                        da.Fill(ds);
+                    }
+                    Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"]);
+                }
+            }
+
+            // set as primary
+            if (!String.IsNullOrEmpty(Request.QueryString["setPrim"]))
+            {
+                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
+                using (SqlConnection conn2 = new SqlConnection(CS))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET [image] = '" + Request.QueryString["setPrim"] + "' WHERE MagID = '" + Request.QueryString["ID"] + "'", conn2);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                }
+                Response.Redirect("MyMagazines.aspx");
+            }
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -75,25 +128,6 @@ namespace ReMag
             }
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
-            if (IsImageLeftwithOne() == "true")
-            {
-                Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"] + "&nodelete=1");
-            }
-            else
-            {
-                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
-                using (SqlConnection conn = new SqlConnection(CS))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter("DELETE FROM [images] WHERE path = '" + Request.Form["hiddenID"] + "'", conn);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                }
-                Response.Redirect("images2.aspx?id=" + Request.QueryString["ID"]);
-            }
-        }
-
         protected string IsImageLeftwithOne()
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
@@ -112,21 +146,5 @@ namespace ReMag
                 }
             }
         }
-
-        protected void LinkButton3_Click(object sender, EventArgs e)
-        {
-            if (Request.Form["hiddenID"].Contains("images"))
-            {
-                string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
-                using (SqlConnection conn = new SqlConnection(CS))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter("UPDATE MyMags SET [image] = '" + Request.Form["hiddenID"] + "' WHERE ID = '" + Request.QueryString["ID"] + "'", conn);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                }
-                Response.Redirect("MyMagazines.aspx");
-            }
-        }
     }
-
 }
