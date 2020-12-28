@@ -46,8 +46,10 @@ namespace ReMag
                         name.Value = reader["name"].ToString();
                         bio.Value = reader["bio"].ToString();
                         telephone.Value = reader["telephone"].ToString();
+                        state.Value = reader["state"].ToString();
                         city.Value = reader["city"].ToString();
                         zip.Value = reader["zip"].ToString();
+                        country.Value = reader["country"].ToString();
                         isChecked = reader["getnewmags"].ToString();
                     }
                 }
@@ -72,14 +74,16 @@ namespace ReMag
             string CS = ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(CS))
             {
-                SqlDataAdapter da = new SqlDataAdapter("UPDATE Profile SET email = @email, telephone = @telephone, name = @name, address = @address, city = @city, zip = @zip, bio = @bio, getnewmags = @getnewmags WHERE name = '" + (String)Session["LoggedIn"] + "'", conn);
+                SqlDataAdapter da = new SqlDataAdapter("UPDATE Profile SET email = @email, telephone = @telephone, name = @name, address = @address, city = @city, state = @state, zip = @zip, country = @country, bio = @bio, getnewmags = @getnewmags WHERE name = '" + (String)Session["LoggedIn"] + "'", conn);
                 da.SelectCommand.Parameters.AddWithValue("@name", name.Value);
                 da.SelectCommand.Parameters.AddWithValue("@email", email.Value);
                 da.SelectCommand.Parameters.AddWithValue("@telephone", telephone.Value);
                 da.SelectCommand.Parameters.AddWithValue("@address", address.Value);
                 da.SelectCommand.Parameters.AddWithValue("@city", city.Value);
                 da.SelectCommand.Parameters.AddWithValue("@zip", zip.Value);
+                da.SelectCommand.Parameters.AddWithValue("@state", state.Value);
                 da.SelectCommand.Parameters.AddWithValue("@bio", bio.Value);
+                da.SelectCommand.Parameters.AddWithValue("@country", country.Value);
                 da.SelectCommand.Parameters.AddWithValue("@getnewmags", isChecked);
                 DataSet ds = new DataSet();
                 da.Fill(ds);

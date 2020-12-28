@@ -70,13 +70,17 @@
                     <input id="city" runat="server" type="text" class="validate" />
                     <label for="city">City</label>
                 </div>
-                <div style="left: 42px" class="input-field col s6">
+                <div style="left: 42px" class="input-field col s4">
                     <input id="state" runat="server" type="text" class="validate" />
                     <label for="state">State</label>
                 </div>
-                <div style="left: 42px" class="input-field col s6">
+                <div style="left: 42px" class="input-field col s4">
                     <input id="zip" runat="server" type="text" class="validate" />
                     <label for="zip">Zip</label>
+                </div>
+                <div style="left: 42px" class="input-field col s4">
+                    <input id="country" runat="server" type="text" class="validate" />
+                    <label for="country">Country</label>
                 </div>
                 <div class="input-field col s12">
                     <i class="material-icons prefix">portrait</i>

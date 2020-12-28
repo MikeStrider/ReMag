@@ -22,10 +22,26 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <h1>Control Panel</h1>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td width="400px">
+                        Number of Mags Active: <span id="magsActive"></span><br />
+                        Number of Mags Retired: <span id="magsRetired"></span>
+                    </td>
+                    <td>
+                        Number of Mags Posted: <span id="magsPosted"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProfileID" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="ProfileID" HeaderText="ProfileID" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                     <asp:TemplateField>
                         <HeaderTemplate>
                             <asp:Label ID="text" runat="server" Text="Name"></asp:Label>
@@ -35,7 +51,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
+                    <asp:BoundField DataField="Telephone" HeaderText="Telephone" SortExpression="Telephone" />
                     <asp:TemplateField>
                         <HeaderTemplate>
                             <asp:Label ID="text" runat="server" Text="Address"></asp:Label>
@@ -60,7 +76,22 @@
                             <asp:Label runat="server" class="class_state" Text='<%# Eval("State")%>' />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Zip" HeaderText="Zip" SortExpression="Zip" />
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label ID="text" runat="server" Text="Zip"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label runat="server" class="class_zip" Text='<%# Eval("Zip")%>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            <asp:Label ID="text" runat="server" Text="Country"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label runat="server" class="class_country" Text='<%# Eval("Country")%>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Bio" HeaderText="Bio" SortExpression="Bio" />
                     <asp:BoundField DataField="GetNewMags" HeaderText="GetNewMagEmails" SortExpression="GetNewMags" />
                     <asp:BoundField DataField="LastLogIn" HeaderText="LastLogIn" SortExpression="LastLogIn" />
@@ -77,7 +108,7 @@
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" SelectCommand="SELECT Profile.Id, Profile.Name, Profile.Email, Profile.Address, Profile.Bio, Profile.Phone, Profile.City, Profile.Zip, Profile.GetNewMags, Profile.State, newTable.LastLogIn FROM Profile FULL OUTER JOIN (SELECT MAX(UDDateTime) AS LastLogIn, Username FROM Logging GROUP BY Username) AS newTable ON newTable.Username = Profile.Name ORDER BY Profile.ID"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" SelectCommand="SELECT Profile.Country, Profile.ProfileID, Profile.Name, Profile.Email, Profile.Address, Profile.Bio, Profile.Telephone, Profile.City, Profile.Zip, Profile.GetNewMags, Profile.State, newTable.LastLogIn FROM Profile FULL OUTER JOIN (SELECT MAX(UDDateTime) AS LastLogIn, Username FROM Logging GROUP BY Username) AS newTable ON newTable.Username = Profile.Name ORDER BY Profile.ProfileID"></asp:SqlDataSource>
         </div>
 
     </form>
@@ -90,13 +121,15 @@
             var allAddresses = [];
             var gotAddress = document.getElementsByClassName("class_address");
             var gotCity = document.getElementsByClassName("class_city");
+            var gotZip = document.getElementsByClassName("class_zip");
             var gotName = document.getElementsByClassName("class_name");
             var gotState = document.getElementsByClassName("class_state");
+            var gotCountry = document.getElementsByClassName("class_country");
             for (var i = 0; i < gotAddress.length; i++) {
                 if (gotAddress[i].innerHTML == "") {
                     alert('Address is missing or invalid for User: ' + gotName[i].innerHTML);
                 } else {
-                    allAddresses.push(gotAddress[i].innerHTML + ", " + gotCity[i].innerHTML + ", " + gotState[i].innerHTML);
+                    allAddresses.push(gotAddress[i].innerHTML + ", " + gotCity[i].innerHTML + ", " + gotState[i].innerHTML + gotZip[i].innerHTML,  gotCountry[i].innerHTML);
                     geocoder.geocode({ 'address': allAddresses[i] }, function (results, status) {
                         if (status === 'OK') {
                             resultsMap.setCenter(results[0].geometry.location);

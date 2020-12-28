@@ -7,3 +7,11 @@
 /packages
 /ReMag/bin
 /ReMag/obj
+/.vs/ReMag/v15/Server/sqlite3/storage.ide-wal
+/.vs/ReMag/v15/Server/sqlite3/storage.ide-shm
+/.vs/ReMag/v15/Server/sqlite3/storage.ide
+/.vs/ReMag/v15/Server/sqlite3/db.lock
+/.vs/ReMag/v15/.suo
+/ReMag/.vs/ReMag/v15/Server/sqlite3/storage.ide
+/ReMag/.vs/ReMag/v15/Server/sqlite3/db.lock
+/ReMag/.vs/ReMag/v15/.suo
