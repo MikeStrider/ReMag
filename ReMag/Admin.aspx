@@ -1,15 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Chat.aspx.cs" Inherits="Chat" Debug="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Admin.aspx.cs" Inherits="ReMag.Admin" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-    <title>ReMag - Chat</title>
+    <title>ReMag</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="myStyles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="myJavaScript.js"></script>
+    <meta name="description" content="This site is a place to resell your old magazines. It is currently in deveoplment. If you would like to contribute please look me up on GitHub." />
+    <meta name="keywords" content="ReMag Michael Strong Resell Magazines" />
+    <meta name="author" content="Michael Strong" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -28,8 +32,8 @@
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
                         <li><a href="Explore.aspx">Explore</a></li>
-                        <li class="active"><a href="Chat.aspx">Chat</a></li>
-                        <li><a href="Admin.aspx">Admin Area</a></li>
+                        <li><a href="Chat.aspx">Chat</a></li>
+                        <li class="active"><a href="Admin.aspx">Admin Area</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
                 </div>
@@ -54,42 +58,23 @@
 
 
             <%--Body--%>
-            <h3>Chat</h3>
-            <p>Get to know your fellow ReMag users.</p>
-            <div class="input-field">
-                <i class="material-icons prefix">chat</i>
-                <input id="txt_chat" runat="server" type="text" class="validate" />
-                <label for="txt_chat">Enter Text Here</label>
+            <h3>Admin Area</h3>
+            <br /><br /><br /><br />
+            <p>
+               Enter admin password to enter.
+
+            </p><br />
+            
+            <div class="input-field col s6">
+                <i class="material-icons prefix">enhanced_encryption</i>
+                <input id="password" runat="server" type="text" class="validate" />
+                <label for="password">Password</label>
             </div>
-            <asp:Button ID="Button1" runat="server" class="waves-effect waves-light btn" Text="Post Message" OnClick="Button1_Click" /><br />
-            <br />
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:GridView ID="GridView1" runat="server" ShowHeader="false" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Horizontal">
-                        <Columns>
-                            <asp:BoundField DataField="UDDateTime" SortExpression="UDDateTime" />
-                            <asp:BoundField DataField="UserName" SortExpression="UserName" />
-                            <asp:BoundField DataField="Text" SortExpression="Text" />
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#333333" />
-                        <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="White" ForeColor="#333333" />
-                        <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                        <SortedAscendingHeaderStyle BackColor="#487575" />
-                        <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                        <SortedDescendingHeaderStyle BackColor="#275353" />
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ReMag-DBConnectionString %>" SelectCommand="SELECT TOP (30) UserName, Text, UDDateTime FROM Chat ORDER BY UKID DESC" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
-                </ContentTemplate>
-                <Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-                </Triggers>
-            </asp:UpdatePanel>
-            <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick"></asp:Timer>
-            <br />
+
+            <a class="waves-effect waves-light btn" runat="server" onserverclick="Go_ServerClick"><i class="material-icons right">send</i>go</a>
+
+
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             <div id="snackbar">Some text some message..</div>
             <%--------%>
 
@@ -111,11 +96,12 @@
             </div>
             <%---------------%>
 
+
             <%--Footer--%>
             <footer class="page-footer green lighten-2">
                 <div class="footer-copyright">
                     <div class="container">
-                        © 2018 Copyright 
+                        © 2020 Copyright 
                         <a class="grey-text text-lighten-4 right" href="index.aspx">Michael Strong <u>about me</u></a>
                     </div>
                 </div>
@@ -125,6 +111,6 @@
         </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 </html>
-

@@ -22,12 +22,13 @@
                     <a href="default.aspx" class="brand-logo">ReMag</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li class="active"><a href="default.aspx">Home</a></li>
-                        <li><a href="UserProfile.aspx">Profile</a></li>
+                        <li><a href="default.aspx">Home</a></li>
+                        <li class="active"><a href="UserProfile.aspx">Profile</a></li>
                         <li><a href="MyMagazines.aspx">My Mags</a></li>
                         <li><a href="Shop.aspx">Shop</a></li>
-                        <li><a href="Explore.aspx">Explore</a></li> 
+                        <li><a href="Explore.aspx">Explore</a></li>
                         <li><a href="Chat.aspx">Chat</a></li>
+                        <li><a href="Admin.aspx">Admin Area</a></li>
                         <li><a id="loginbtn" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
                     </ul>
                 </div>
@@ -39,8 +40,15 @@
                 <li><a href="Shop.aspx">Shop</a></li>
                 <li><a href="Explore.aspx">Explore</a></li>
                 <li><a href="Chat.aspx">Chat</a></li>
+                <li><a href="Admin.aspx">Admin Area</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
+            <div id="txtUserId" runat="server">name here</div>
+            <style>
+                #txtUserId {
+                    float: right;
+                }
+            </style>
             <%----------%>
 
             <%--Body--%>
