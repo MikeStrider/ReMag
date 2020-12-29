@@ -28,11 +28,11 @@
             <table>
                 <tr>
                     <td width="400px">
-                        Number of Mags Active: <span id="magsActive"></span><br />
-                        Number of Mags Retired: <span id="magsRetired"></span>
+                        Number of Mags Active: <input id="magsActive" runat="server" type="text" style="border: 0"/> <br />
+                        Number of Mags Retired: <input id="magsRetired" runat="server" type="text" style="border: 0"/> <br />
                     </td>
                     <td>
-                        Number of Mags Posted: <span id="magsPosted"></span>
+                        Number of Mags Posted: <input id="magsPosted" runat="server" type="text" style="border: 0"/> <br />
                     </td>
                 </tr>
             </table>

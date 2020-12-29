@@ -16,8 +16,9 @@ namespace ReMag
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoggedIn"] != null) {
-                ((HtmlAnchor)(FindControl("loginbtn"))).InnerText = (String)Session["LoggedIn"];
-                ((HtmlAnchor)FindControl("loginbtn2")).InnerText = (String)Session["LoggedIn"];
+                ((HtmlAnchor)(FindControl("loginbtn"))).InnerText = "Log Out";
+                ((HtmlAnchor)FindControl("loginbtn2")).InnerText = "Log Out";
+                txtUserId.InnerText = (String)Session["LoggedIn"];
                 ((HtmlAnchor)(FindControl("loginbtn"))).HRef = "#modal2";
                 ((HtmlAnchor)(FindControl("loginbtn2"))).HRef = "#modal2";
                 ((HtmlAnchor)(FindControl("loginbtn"))).Attributes.Add("class", "waves-effect waves-light btn modal-trigger green lighten-2");
