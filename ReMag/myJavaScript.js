@@ -1,20 +1,4 @@
-﻿function ShowFailedToast(message) {
-    var x = document.getElementById("snackbar");
-    x.innerText = message;
-    x.className = "show";
-    x.style.backgroundColor = "rgb(220,45,45)";
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-}
-
-function ShowSuccessToast(message) {
-    var x = document.getElementById("snackbar");
-    x.innerText = message;
-    x.className = "show";
-    x.style.backgroundColor = "rgb(95,174,42)";
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
-}
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('.modal').modal();
     $('.collapsible').collapsible();
     $('select').formSelect();
@@ -52,81 +36,77 @@ $(document).ready(function () {
 
     var x = document.getElementById("snackbar");
     if ($.urlParam('ln') == 'Y') {
-        x.innerText = "success - you are now logged in";
+        x.innerText = "you are now logged in";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('lo') == 'Y') {
-        x.innerText = "success - you are now logged out";
+        x.innerText = "you are now logged out";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('reg') == 'Y') {
-        x.innerText = "success - you are now registered and logged in";
+        x.innerText = "you are now registered and logged in";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('lf') == 'Y') {
-        x.innerText = "fail - invalid credentials";
+        x.innerText = "invalid credentials";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('ex') == 'Y') {
-        x.innerText = "fail - unable to create user, please check required fields";
+        x.innerText = "unable to create user, please check required fields";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('dn') == 'Y') {
-        x.innerText = "fail - navigation denied, please login first";
+        x.innerText = "navigation denied, please login first";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('sc') == 'Y') {
-        x.innerText = "success - profile has been saved";
+        x.innerText = "profile saved";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('ad') == 'Y' && document.getElementById("Label1").innerText == "Label") {
-        x.innerText = "success - magazine has been added";
+        x.innerText = "magazine added";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('up') == 'Y') {
-        x.innerText = "success - image has been uploaded";
+        x.innerText = "image uploaded";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('up') == 'N') {
         x.innerText = "failed - see stack for more info";
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('vo') == 'Y') {
         document.getElementById("useoptions").style.display = "none";
     }
-    if ($.urlParam('pt') == 'Y') {
+    if ($.urlParam('psd') == 'Y') {
         x.innerText = "mag has been posted";
         x.className = "show";
-        x.style.backgroundColor = "rgb(95,174,42)";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
-    if ($.urlParam('pt') == 'N') {
+    if ($.urlParam('psd') == 'N') {
         x.innerText = "mag has been unposted";
         x.className = "show";
-        x.style.backgroundColor = "rgb(95,174,42)";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('idr')) {
         x.innerText = "mag has been retired";
         x.className = "show";
-        x.style.backgroundColor = "rgb(95,174,42)";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if ($.urlParam('nodelete')) {
         x.innerText = "cannot delete last image";
         x.className = "show";
-        x.style.backgroundColor = "rgb(220,45,45)";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 4000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 6000);
     }
     if (($.urlParam('vo') == 'Y') && (window.location.pathname == "/images2.aspx")) {
         document.getElementById("useoptions").style.display = "none";

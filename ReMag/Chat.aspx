@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>ReMag - Chat</title>
+    <title>ReMag Chat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="myStyles.css" />
@@ -44,7 +44,7 @@
                 <li><a href="Admin.aspx">Admin Area</a></li>
                 <li><a id="loginbtn2" runat="server" class="waves-effect waves-light btn modal-trigger" href="#modal1">Log In</a></li>
             </ul>
-            <div id="txtUserId" runat="server">name here</div>
+            <div id="txtUserId" runat="server"></div>
             <style>
                 #txtUserId {
                     float: right;

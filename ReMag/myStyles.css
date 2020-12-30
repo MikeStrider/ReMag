@@ -15,8 +15,8 @@
 
 #snackbar.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
-    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 5.5s;
+    animation: fadein 0.5s, fadeout 0.5s 5.5s;
 }
 
 .carousel .carousel-item {

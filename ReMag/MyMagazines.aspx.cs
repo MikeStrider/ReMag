@@ -111,7 +111,7 @@ namespace ReMag
                     da.Fill(ds);
                 }
                 MySharedClasses sharedObject = new MySharedClasses();
-                sharedObject.Log(magID, Session["LoggedIn"].ToString(), "mag un-posted");
+                sharedObject.Log("magID: " + magID, Session["LoggedIn"].ToString(), "mag un-posted");
             }
         }
 
@@ -153,6 +153,8 @@ namespace ReMag
             DataSet ds2 = new DataSet();
             da2.Fill(ds2);
 
+            MySharedClasses sharedObject = new MySharedClasses();
+            sharedObject.Log("title: " + txtTitle.Value, Session["LoggedIn"].ToString(), "new mag added");
 
             Response.Redirect("MyMagazines.aspx?ad=Y");
         }
@@ -175,14 +177,14 @@ namespace ReMag
                 {
                     HyperLink hyp = new HyperLink();
                     hyp.ID = "unPostBtn";
-                    hyp.NavigateUrl = "~/MyMagazines.aspx?uid=" + e.Row.Cells[0].Text;
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?uid=" + e.Row.Cells[0].Text + "&psd=N";
                     hyp.Text = "unpost";
                     hyp.CssClass = "waves-effect waves-light btn";
                     e.Row.Cells[8].Controls.Add(hyp);
                 } else {
                     HyperLink hyp = new HyperLink();
                     hyp.ID = "unPostBtn";
-                    hyp.NavigateUrl = "~/MyMagazines.aspx?pid=" + e.Row.Cells[0].Text;
+                    hyp.NavigateUrl = "~/MyMagazines.aspx?pid=" + e.Row.Cells[0].Text + "&psd=Y";
                     hyp.Text = "post";
                     hyp.CssClass = "waves-effect waves-light btn";
                     e.Row.Cells[8].Controls.Add(hyp);

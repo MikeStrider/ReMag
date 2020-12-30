@@ -67,6 +67,8 @@ namespace ReMag
                 {
                     Session["LoggedInID"] = GetUserID(username.Value);
                     Session["LoggedIn"] = username.Value;
+                    MySharedClasses sharedObject = new MySharedClasses();
+                    sharedObject.Log("", Session["LoggedIn"].ToString(), "logged in");
                     Response.Redirect("default.aspx?ln=Y");
                 }
                 else

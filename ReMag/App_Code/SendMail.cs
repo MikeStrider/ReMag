@@ -58,7 +58,7 @@ public class SendMail
                     smtp.Send(mm);
                 }
                 MySharedClasses sharedObject = new MySharedClasses();
-                sharedObject.Log(magID, userID, "mag posted");
+                sharedObject.Log("magID: " + magID, userID, "mag posted");
 
             }
         }

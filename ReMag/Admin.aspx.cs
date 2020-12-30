@@ -35,9 +35,14 @@ namespace ReMag
 
         protected void Go_ServerClick(object sender, EventArgs e)
         {
-
+            if (Globals.masterPassword == password.Value)
+            {
+                Response.Redirect("ControlPanel.aspx");
+            }
+            else
+            {
+                Response.Redirect("Admin.aspx?lf=Y");
+            }
         }
-
-
     }
 }

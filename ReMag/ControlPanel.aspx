@@ -5,7 +5,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>ReMag - Admin Control Panel</title>
+    <title>ReMag Control Panel</title>
     <style>
         #map {
             height: 700px;
@@ -33,6 +33,7 @@
                     </td>
                     <td>
                         Number of Mags Posted: <input id="magsPosted" runat="server" type="text" style="border: 0"/> <br />
+                        Number of Registered Users: <input id="magUsers" runat="server" type="text" style="border: 0"/> <br />
                     </td>
                 </tr>
             </table>
@@ -129,7 +130,7 @@
                 if (gotAddress[i].innerHTML == "") {
                     alert('Address is missing or invalid for User: ' + gotName[i].innerHTML);
                 } else {
-                    allAddresses.push(gotAddress[i].innerHTML + ", " + gotCity[i].innerHTML + ", " + gotState[i].innerHTML + gotZip[i].innerHTML,  gotCountry[i].innerHTML);
+                    allAddresses.push(gotAddress[i].innerHTML + ", " + gotCity[i].innerHTML + ", " + gotState[i].innerHTML + ", " + gotZip[i].innerHTML + ", " + gotCountry[i].innerHTML);
                     geocoder.geocode({ 'address': allAddresses[i] }, function (results, status) {
                         if (status === 'OK') {
                             resultsMap.setCenter(results[0].geometry.location);

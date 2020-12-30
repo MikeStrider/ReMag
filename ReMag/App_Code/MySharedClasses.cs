@@ -21,7 +21,7 @@ public class MySharedClasses
         SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Logging] ([UDDateTime], [Type], [Info], UserName) VALUES (@datetime, @type, @info, @UserName)", conn);
         da.SelectCommand.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("MM-dd-yyyy h:mm:ss tt"));
         da.SelectCommand.Parameters.AddWithValue("@type", type);
-        da.SelectCommand.Parameters.AddWithValue("@info", "magID: " + info);
+        da.SelectCommand.Parameters.AddWithValue("@info", info);
         da.SelectCommand.Parameters.AddWithValue("@UserName", userName);
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -29,7 +29,8 @@ public class MySharedClasses
     }
 }
 
-static class Globals
+public static class Globals
 {
     public static string emailPassword = "remag12#$";
+    public static string masterPassword = "mikemike";
 }

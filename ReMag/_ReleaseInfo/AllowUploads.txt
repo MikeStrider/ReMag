@@ -1,2 +1,4 @@
 ﻿To allow uploads you need to set permission to the folder you are uploading too.
 RDP into the instance and right click wwwroot.  Go to the IIS User and allow, full control.
+
+To release, copy and paste the entire folder.

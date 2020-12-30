@@ -29,6 +29,12 @@ public partial class Chat : System.Web.UI.Page
         }
     }
 
+    protected void Logout_ServerClick(object sender, EventArgs e)
+    {
+        Session["LoggedIn"] = null;
+        Response.Redirect("default.aspx?lo=Y");
+    }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ReMag-DBConnectionString"].ConnectionString);
@@ -39,12 +45,6 @@ public partial class Chat : System.Web.UI.Page
         DataSet ds = new DataSet();
         da.Fill(ds);
         Response.Redirect("Chat.aspx");
-    }
-
-    protected void Logout_ServerClick(object sender, EventArgs e)
-    {
-        Session["LoggedIn"] = null;
-        Response.Redirect("default.aspx?lo=Y");
     }
 
     protected void Timer1_Tick(object sender, EventArgs e)
