@@ -4,18 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Michael Strong</title>
+    <title>Michael Strong Main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Mike Strong, Husband, Father, Tech Support Engineer, Web Developer, Gamer, Hockey Player, Your New Best Friend" />
     <meta name="keywords" content="Mike Strong, Husband, Father, Tech Support Engineer, Web Developer, Gamer, Hockey Player, Your New Best Friend" />
     <meta name="author" content="Michael Strong" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="Helper_Code/meStyle.css" />
+    <script src="Helper_Code/meJavaScript.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
 </head>
 <body>
     <form id="form1" runat="server">
 
+        <%-- Nav Bar Start --%>
         <nav class="navbar">
             <span class="open-slide">
                 <a href="#" onclick="openSlideMenu()">
@@ -30,7 +32,7 @@
             <ul class="navbar-nav">
                 <li><a href="index.aspx">Home</a></li>
                 <li><a href="Projects.aspx">Projects</a></li>
-                <li><a href="Blogs.aspx">Blogs</a></li>
+                <li><a href="News.aspx">News</a></li>
             </ul>
             <div id="emailtopright">
                 <a href="mailto:mike.strong@live.ca"><i class="far fa-envelope"></i>
@@ -42,8 +44,9 @@
             <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
             <a href="index.aspx">Home</a>
             <a href="Projects.aspx">Projects</a>
-            <a href="Blogs.aspx">Blogs</a>
+            <a href="News.aspx">News</a>
         </div>
+        <%-- Nav Bar End --%>
 
         <div id="main">
             <a href="#">
@@ -128,21 +131,7 @@
                     </div>
                 </div>
             </div>
-
-          
-        <script>
-            function openSlideMenu() {
-                document.getElementById('side-menu').style.width = '250px';
-                document.getElementById('main').style.marginLeft = '250px';
-            }
-
-            function closeSlideMenu() {
-                document.getElementById('side-menu').style.width = '0px';
-                document.getElementById('main').style.marginLeft = '0px';
-            }
-        </script>
-
+        </div>
     </form>
 </body>
 </html>
-

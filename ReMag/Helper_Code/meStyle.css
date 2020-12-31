@@ -404,28 +404,36 @@ h1{
     .subscribedbox {
         width: 50%;
     }
+
     #box-container1 {
         flex-wrap: wrap;
     }
+
     #abox-1 {
         width: 100%;
         text-align: center;
     }
+
     #abox-2 {
         top: 0px;
     }
+
     .proj-container {
-        flex-wrap:wrap;
+        flex-wrap: wrap;
     }
-    .col1{
-        width:400px;
+
+    .col1 {
+        width: 400px;
     }
-    .col2{
-        width:100%;
+
+    .col2 {
+        width: 100%;
     }
+}
 
 @media (max-width: 500px) {
     .subscribedbox {
         width: 100%;
     }
 }
+
