@@ -33,10 +33,10 @@
                 <li><a href="index.aspx">Home</a></li>
                 <li><a href="Projects.aspx">Projects</a></li>
                 <li><a href="News.aspx">News</a></li>
+                <li><a href="Random.aspx">Random Things</a></li>
             </ul>
             <div id="emailtopright">
-                <a href="mailto:mike.strong@live.ca"><i class="far fa-envelope"></i>
-                    mike.strong@live.ca</a>
+                <a href="mailto:mike.strong@live.ca"><i class="far fa-envelope"></i>mike.strong@live.ca</a>
             </div>
         </nav>
 
@@ -45,6 +45,7 @@
             <a href="index.aspx">Home</a>
             <a href="Projects.aspx">Projects</a>
             <a href="News.aspx">News</a>
+            <a href="Random.aspx">Random Things</a>
         </div>
         <%-- Nav Bar End --%>
 
