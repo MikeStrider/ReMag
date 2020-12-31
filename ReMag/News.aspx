@@ -44,62 +44,111 @@
             <a href="News.aspx">News</a>
         </div>
         <%-- Nav Bar End --%>
+        <div id="main">
 
-        <h1>News</h1>
+            <a href="#">
+                <div id="iconsize">
+                    <div class="tooltip">
+                        <i class="fas fa-arrow-circle-up"></i><span class="tooltiptext">scroll to top</span>
+                    </div>
+                </div>
+            </a>
 
-        <div id="newsFeed" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
+            <h1>News</h1>
+            <h2 style="font-size: 14px; font-weight: 400;">source - <a href="https://newsapi.org" style='color:rgb(255, 255, 255);'>https://newsapi.org</a></h2>
 
-        <script>
-            var element = document.getElementById("newsFeed");
-            var br = document.createElement("br");
+            <div style="text-align: center; color:rgb(255, 255, 255);">
+                Search for something specfic <input id="txtSearch" type="text" value="" runat="server"/> <button>Go</button>
+            </div>
+            
+            <div style="text-align: center; padding-top:5px; color:rgb(255, 255, 255);"> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Transportation')">Transportation</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Health')">Health</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Tech')">Tech</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('World')">World</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Politics')">Politics</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Canada')">Canada</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('United States')">United States</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Business')">Business</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Sports')">Sports</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Hockey')">Hockey</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Football')">Football</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Science')">Science</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Entertainment')">Entertainment</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Music')">Music</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('Movies')">Movies</a> / 
+                <a style='color:rgb(255, 255, 255);' href="#" onclick="newsGroups('TV')">TV</a> / 
+            </div>
 
-            fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
-                .then(response => response.json())
-                .then(data => ProcessItems(data));
+            <div id="newsFeed" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
 
-            function ProcessItems(data) {
-                console.log(data)
+            <script>
+                var element = document.getElementById("newsFeed");
+                var br = document.createElement("br");
 
-                for (x = 0; x <= 10; x++) {
-                    var secDiv = document.createElement("div");
-                    var tag = document.createElement("div");
-                    var text = document.createTextNode(data.articles[x].title);
-                    tag.style.backgroundColor = 'rgb(124, 124, 124)';
-                    tag.style.color = 'rgb(255, 255, 255)';
-                    tag.style.padding = "10px";
-                    tag.appendChild(text);
-                    secDiv.appendChild(tag);
-
-                    var tag = document.createElement("div");
-                    var text = document.createTextNode(data.articles[x].content);
-                    tag.style.backgroundColor = 'rgb(124, 124, 124)';
-                    tag.style.color = 'rgb(255, 255, 255)';
-                    tag.style.padding = "10px";
-                    tag.appendChild(text);
-                    secDiv.appendChild(tag);
-
-                    var tag = document.createElement("div");
-                    var text = document.createTextNode(" - " + data.articles[x].url);
-                    tag.style.backgroundColor = 'rgb(124, 124, 124)';
-                    tag.style.color = 'rgb(255, 255, 255)';
-                    tag.style.padding = "10px";
-                    tag.appendChild(text);
-                    secDiv.appendChild(tag);
-
-                    var br = document.createElement("br");
-                    secDiv.style.width = "400px";
-                    secDiv.style.padding = "15px";
-                    secDiv.appendChild(br);
-
-                    element.appendChild(secDiv);
-
+                if (txtSearch.value == "") {
+                    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                        .then(response => response.json())
+                        .then(data => ProcessItems(data));
+                } else {
+                    fetch('https://newsapi.org/v2/everything?q=' + txtSearch.value + '&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                        .then(response => response.json())
+                        .then(data => ProcessItems(data));
                 }
-            }
-        </script>
 
+                function ProcessItems(data) {
+                    console.log(data)
 
+                    for (x = 0; x <= 11; x++) {
+                        var secDiv = document.createElement("div");
+                        var tag = document.createElement("div");
+                        var text = document.createTextNode(data.articles[x].title);
+                        tag.style.color = 'rgb(255, 255, 255)';
+                        tag.style.padding = "10px";
+                        tag.style.fontWeight = "bold";
+                        tag.appendChild(text);
+                        secDiv.appendChild(tag);
 
-        <div>
+                        var img = document.createElement("img");
+                        img.src = data.articles[x].urlToImage;
+                        img.style = "display: block; margin-left: auto; margin-right: auto; width: 325px;";
+                        secDiv.appendChild(img);
+
+                        var tag = document.createElement("div");
+                        var text = document.createTextNode(data.articles[x].content);
+                        tag.style.color = 'rgb(255, 255, 255)';
+                        tag.style.padding = "10px";
+                        tag.appendChild(text);
+                        secDiv.appendChild(tag);
+
+                        var a = document.createElement('a');
+                        var linkText = document.createTextNode(data.articles[x].url.slice(0, 40) + "...");
+                        a.appendChild(linkText);
+                        a.href = data.articles[x].url;
+                        a.style.padding = "10px";
+                        a.style.color = 'rgb(255, 255, 255)';
+                        secDiv.appendChild(a);
+
+                        var br = document.createElement("br");
+                        secDiv.style.width = "400px";
+                        secDiv.style.margin = "30px";
+                        secDiv.style.padding = "10px";
+                        secDiv.style.backgroundColor = 'rgb(124, 124, 124)';
+                        secDiv.appendChild(br);
+
+                        element.appendChild(secDiv);
+
+                    }
+                }
+
+                function newsGroups(word) {
+                    element.innerHTML = "";
+                    txtSearch.value = word
+                    fetch('https://newsapi.org/v2/everything?q=' + word + '&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                        .then(response => response.json())
+                        .then(data => ProcessItems(data));
+                }
+            </script>
         </div>
     </form>
 </body>
