@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Random.aspx.vb" Inherits="Random" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Random.aspx.cs" Inherits="Random" %>
 
 <!DOCTYPE html>
 
@@ -17,7 +17,7 @@
         }
     </style>
 <body>
-    <form id="form1" runat="server">
+    <form id="form2" runat="server">
 
         <%-- Nav Bar Start --%>
         <nav class="navbar">
@@ -53,11 +53,13 @@
         <div id="main" style="text-align: center;">
             <h1>Random Things</h1>
             <br />
-            <p><b>Dad Joke from <a style="color:white;" href="https://icanhazdadjoke.com">icanhazdadjoke.com</b></a></p>
+            <p><b>Dad Joke, API calling out to <a style="color:white;" href="https://icanhazdadjoke.com">icanhazdadjoke.com</a></b></p>
             <div id="divJoke"></div>
             <br />
-            <p><b>Inspiring Quote from <a style="color:white;" href="https://icanhazdadjoke.com">icanhazdadjoke.com</b></a></p>
-            <div id="divQuote"></div>
+            <p><b>Inspiring Quote, json file provided by <a style="color:white;" href="https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373">FreeCodeCamp.com</a></b></p>
+            <div id="divQuote" runat="server"></div>
+            <br /> <br /> <br />
+            <div>Reload the page for more randomness.</div>
 
             <script>
                 var dadJokeElement = document.getElementById("divJoke");
@@ -72,12 +74,7 @@
                 fetch("https://icanhazdadjoke.com", requestOptions)
                   .then(response => response.json())
                   .then(result => ProcessItems(result, dadJokeElement))
-                  .catch(error => console.log('error', error));
-
-                fetch("https://type.fit/api/quotes")
-                  .then(response => response.text())
-                  .then(result => console.log(result))
-                  .catch(error => console.log('error', error));         
+                  .catch(error => console.log('error', error));  
 
                 function ProcessItems(data, element) {
                     console.log(data);
