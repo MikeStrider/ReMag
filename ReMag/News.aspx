@@ -57,7 +57,7 @@
             </a>
 
             <h1>News</h1>
-            <h2 style="font-size: 14px; font-weight: 400;">source - <a href="https://newsapi.org" style='color:rgb(255, 255, 255);'>https://newsapi.org</a></h2>
+            <h2 style="font-size: 14px; font-weight: 400;">source - <a href="https://mediastack.com/" style='color:rgb(255, 255, 255);'>mediastack.com</a></h2>
 
             <div style="text-align: center; color:rgb(255, 255, 255);">
                 Search for something specfic <input id="txtSearch" type="text" value="" runat="server"/> <button>Go</button>
@@ -85,70 +85,98 @@
             <div id="newsFeed" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
 
             <script>
+
                 var element = document.getElementById("newsFeed");
                 var br = document.createElement("br");
+                var lastItem = "";
+
+                //fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                //    .then(response => response.json())
+                //    .then(data => ProcessItems(data));
+
+                //fetch('https://newsapi.org/v2/everything?q='  '&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                //    .then(response => response.json())
+                //    .then(data => ProcessItems(data));
 
                 if (txtSearch.value == "") {
-                    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                    fetch("http://api.mediastack.com/v1/news?access_key=899a54a839b905a62cf17fd05cfaf094&languages=en&countries=ca&limit=100&")
                         .then(response => response.json())
-                        .then(data => ProcessItems(data));
+                        .then(data => ProcessItems(data))
+                        .catch(error => console.log('error', error));
                 } else {
-                    fetch('https://newsapi.org/v2/everything?q=' + txtSearch.value + '&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                    fetch("http://api.mediastack.com/v1/news?access_key=899a54a839b905a62cf17fd05cfaf094&languages=en&countries=ca&limit=100&keywords=" + txtSearch.value)
                         .then(response => response.json())
-                        .then(data => ProcessItems(data));
+                        .then(data => ProcessItems(data))
+                        .catch(error => console.log('error', error));
                 }
 
                 function ProcessItems(data) {
                     console.log(data)
+                    var counting = 0;
+                    for (x = 0; x <= 100; x++) {
+                        if (data.data[x].image != null) {
+                            if (lastItem != data.data[x].title) {
+                                lastItem = data.data[x].title;
+                                counting = counting + 1;
+                                var secDiv = document.createElement("div");
+                                var tag = document.createElement("div");
+                                var text = document.createTextNode(data.data[x].title);
+                                tag.style.color = 'rgb(255, 255, 255)';
+                                tag.style.padding = "10px";
+                                tag.style.fontWeight = "bold";
+                                tag.appendChild(text);
+                                secDiv.appendChild(tag);
 
-                    for (x = 0; x <= 11; x++) {
-                        var secDiv = document.createElement("div");
-                        var tag = document.createElement("div");
-                        var text = document.createTextNode(data.articles[x].title);
-                        tag.style.color = 'rgb(255, 255, 255)';
-                        tag.style.padding = "10px";
-                        tag.style.fontWeight = "bold";
-                        tag.appendChild(text);
-                        secDiv.appendChild(tag);
+                                var img = document.createElement("img");
+                                img.src = data.data[x].image;
+                                img.style = "display: block; margin-left: auto; margin-right: auto; width: 325px;";
+                                secDiv.appendChild(img);
 
-                        var img = document.createElement("img");
-                        img.src = data.articles[x].urlToImage;
-                        img.style = "display: block; margin-left: auto; margin-right: auto; width: 325px;";
-                        secDiv.appendChild(img);
+                                var tag = document.createElement("div");
+                                var text = document.createTextNode(data.data[x].description);
+                                tag.style.color = 'rgb(255, 255, 255)';
+                                tag.style.padding = "10px";
+                                tag.appendChild(text);
+                                secDiv.appendChild(tag);
 
-                        var tag = document.createElement("div");
-                        var text = document.createTextNode(data.articles[x].content);
-                        tag.style.color = 'rgb(255, 255, 255)';
-                        tag.style.padding = "10px";
-                        tag.appendChild(text);
-                        secDiv.appendChild(tag);
+                                var tag = document.createElement("div");
+                                var text = document.createTextNode("Published: " + data.data[x].published_at);
+                                tag.style.color = 'rgb(255, 255, 255)';
+                                tag.style.padding = "10px";
+                                tag.appendChild(text);
+                                secDiv.appendChild(tag);
 
-                        var a = document.createElement('a');
-                        var linkText = document.createTextNode(data.articles[x].url.slice(0, 40) + "...");
-                        a.appendChild(linkText);
-                        a.href = data.articles[x].url;
-                        a.style.padding = "10px";
-                        a.style.color = 'rgb(255, 255, 255)';
-                        secDiv.appendChild(a);
+                                var a = document.createElement('a');
+                                var linkText = document.createTextNode(data.data[x].url.slice(0, 40) + "...");
+                                a.appendChild(linkText);
+                                a.href = data.data[x].url;
+                                a.style.padding = "10px";
+                                a.style.color = 'rgb(255, 255, 255)';
+                                secDiv.appendChild(a);
 
-                        var br = document.createElement("br");
-                        secDiv.style.width = "400px";
-                        secDiv.style.margin = "30px";
-                        secDiv.style.padding = "10px";
-                        secDiv.style.backgroundColor = 'rgb(124, 124, 124)';
-                        secDiv.appendChild(br);
+                                var br = document.createElement("br");
+                                secDiv.style.width = "400px";
+                                secDiv.style.margin = "30px";
+                                secDiv.style.padding = "10px";
+                                secDiv.style.backgroundColor = 'rgb(124, 124, 124)';
+                                secDiv.appendChild(br);
 
-                        element.appendChild(secDiv);
-
+                                element.appendChild(secDiv);
+                                if (counting >= 12) {
+                                    x = 200;
+                                }
+                            }
+                        }
                     }
                 }
 
                 function newsGroups(word) {
                     element.innerHTML = "";
                     txtSearch.value = word
-                    fetch('https://newsapi.org/v2/everything?q=' + word + '&apiKey=b39cf6b4a47542d39286a5ba089a59a6')
+                    fetch("http://api.mediastack.com/v1/news?access_key=899a54a839b905a62cf17fd05cfaf094&languages=en&countries=ca&limit=100&keywords=" + word)
                         .then(response => response.json())
-                        .then(data => ProcessItems(data));
+                        .then(data => ProcessItems(data))
+                        .catch(error => console.log('error', error));
                 }
             </script>
         </div>

@@ -65,16 +65,16 @@
                 You will need an account.  Once created you can update your Profile.<br />
                 The My Mags page allows you to post magazines available for sale.<br />
                 Shop is a list of mags available to buy.<br />
-                Explore has reviews and features articles.<br />
                 <br />
 
                 Page uses Materialize from google.  SQL, ASP.NET, JavaScript, etc.<br /><br />
 
-                Katan Board can be found on GitHub.  Slack chat room is available to discuss the Project.<br /><br />
-
                 We are using "Toasts" to update when the user as they navigate the site.<br /><br />
 
-                Service Workers will be used later in the project.
+                Please contact me if you would like to contribute to this project.<br /><br />
+
+                My online profile can be found <a href="index.aspx">here</a>.<br /><br />
+
             </p><br /><br />
             <div id="snackbar">Some text some message..</div>
             <%--------%>
