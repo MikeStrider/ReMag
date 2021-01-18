@@ -40,13 +40,17 @@ public partial class Random : System.Web.UI.Page
         try
         {
             PdfDocument doc = converter.ConvertUrl(url);
-            //doc.Save(Server.MapPath("/Documents/document3.pdf"));
-            doc.Save(Response, false, "document3.pdf");
+            // if you want to save to file doc.Save(Server.MapPath("/Documents/document3.pdf"));
+            doc.Save(Response, true, "document3.pdf");
             doc.Close();
         }
         catch (Exception ex)
         {
-            myModal.Style.Add("display", "block");
+            // show the error model
+            if (ex.Message != "Thread was being aborted.")
+            {
+                myModal.Style.Add("display", "block");
+            }
         }
     }
 }

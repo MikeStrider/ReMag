@@ -15,9 +15,7 @@
             color: white;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+        .pointer {cursor: pointer;}
 
         /* The Modal (background) */
         .modal {
@@ -176,20 +174,18 @@
             </div>
 
             <h1>Random Things</h1>
-            <br />
-            <p><b>Dad Joke, API calling out to <a style="color: white;" href="https://icanhazdadjoke.com">icanhazdadjoke.com</a></b></p>
+            <h2>APIs</h2>
+            <p><b>Dad Joke, API calling out to <a style="color: white;" class="pointer"href="https://icanhazdadjoke.com">icanhazdadjoke.com</a></b></p>
             <div id="divJoke"></div>
             <br />
-            <p><b>Inspiring Quote, json file provided by <a style="color: white;" href="https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373">FreeCodeCamp.com</a></b></p>
+            <p><b>Inspiring Quote, json file provided by <a style="color: white;" class="pointer" href="https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373">FreeCodeCamp.com</a></b></p>
             <div id="divQuote" runat="server"></div>
-            <br />
-            <br />
-            <div>Reload the page for more randomness.</div>
-            <br />
-            <br />
+            <br /><br />
+            <div style="color:lightgray">Reload the page for more randomness.</div>
             <br />
             <div>
                 <h2>Save a Website to PDF</h2>
+                <p><b>3rd party .NET library from <a style="color: white;" class="pointer" href="https://selectpdf.com">selectpdf.com</a></b></p>
                 <input type="text" id="txtMakePDF" runat="server" />
                 <asp:Button Text="Make a PDF" runat="server" ID="btnMakePDF" OnClick="btnMakePDF_Click" />
             </div>
@@ -229,10 +225,12 @@
                 //}
                 span.onclick = function () {
                     modal.style.display = "none";
+                    window.location.href = "Random.aspx";
                 }
                 window.onclick = function (event) {
                     if (event.target == modal) {
                         modal.style.display = "none";
+                        window.location.href = "Random.aspx";
                     }
                 }
 
