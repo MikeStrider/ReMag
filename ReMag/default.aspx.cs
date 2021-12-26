@@ -68,7 +68,7 @@ namespace ReMag
                     Session["LoggedInID"] = GetUserID(username.Value);
                     Session["LoggedIn"] = username.Value;
                     MySharedClasses sharedObject = new MySharedClasses();
-                    sharedObject.Log("", Session["LoggedIn"].ToString(), "logged in");
+                    sharedObject.Log("UserID " + Session["LoggedIn"] + " - ClientID " + Request.UserHostAddress, Int32.Parse(Session["LoggedInID"].ToString()), "logged in");
                     Response.Redirect("default.aspx?ln=Y");
                 }
                 else
@@ -80,6 +80,8 @@ namespace ReMag
 
         protected void Logout_ServerClick(object sender, EventArgs e)
         {
+            MySharedClasses sharedObject = new MySharedClasses();
+            sharedObject.Log("UserID " + Session["LoggedIn"] + " - ClientID " + Request.UserHostAddress, Int32.Parse(Session["LoggedInID"].ToString()), "logged out");
             Session["LoggedIn"] = null;
             Response.Redirect("default.aspx?lo=Y");
         }

@@ -31,6 +31,8 @@ public partial class Chat : System.Web.UI.Page
 
     protected void Logout_ServerClick(object sender, EventArgs e)
     {
+        MySharedClasses sharedObject = new MySharedClasses();
+        sharedObject.Log("UserID " + Session["LoggedIn"] + " - ClientID " + Request.UserHostAddress, Int32.Parse(Session["LoggedInID"].ToString()), "logged out");
         Session["LoggedIn"] = null;
         Response.Redirect("default.aspx?lo=Y");
     }

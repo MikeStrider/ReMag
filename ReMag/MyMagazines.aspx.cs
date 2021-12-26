@@ -111,12 +111,14 @@ namespace ReMag
                     da.Fill(ds);
                 }
                 MySharedClasses sharedObject = new MySharedClasses();
-                sharedObject.Log("magID: " + magID, Session["LoggedIn"].ToString(), "mag un-posted");
+                sharedObject.Log("magID: " + magID, Int32.Parse(Session["LoggedInID"].ToString()), "mag un-posted");
             }
         }
 
         protected void Logout_ServerClick(object sender, EventArgs e)
         {
+            MySharedClasses sharedObject = new MySharedClasses();
+            sharedObject.Log("UserID " + Session["LoggedIn"] + " - ClientID " + Request.UserHostAddress, Int32.Parse(Session["LoggedInID"].ToString()), "logged out");
             Session["LoggedIn"] = null;
             Response.Redirect("default.aspx?lo=Y");
         }
@@ -154,7 +156,7 @@ namespace ReMag
             da2.Fill(ds2);
 
             MySharedClasses sharedObject = new MySharedClasses();
-            sharedObject.Log("title: " + txtTitle.Value, Session["LoggedIn"].ToString(), "new mag added");
+            sharedObject.Log("title: " + txtTitle.Value, Int32.Parse(Session["LoggedInID"].ToString()), "new mag added");
 
             Response.Redirect("MyMagazines.aspx?ad=Y");
         }
