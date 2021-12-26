@@ -175,17 +175,23 @@
 
             <h1>Random Things</h1>
             <h2>APIs</h2>
-            <p><b>Dad Joke, API calling out to <a style="color: white;" class="pointer"href="https://icanhazdadjoke.com">icanhazdadjoke.com</a></b></p>
-            <div id="divJoke"></div>
+            <div style="margin: auto;width:800px;padding: 20px;background:rgb(124,124,124)">
+                <b>Dad Joke, random joke, an API calling out to <a style="color: white;" class="pointer"href="https://icanhazdadjoke.com">icanhazdadjoke.com</a></b>
+                <br /><br />
+                <div id="divJoke"></div>
+            </div>
             <br />
-            <p><b>Inspiring Quote, json file provided by <a style="color: white;" class="pointer" href="https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373">FreeCodeCamp.com</a></b></p>
-            <div id="divQuote" runat="server"></div>
-            <br /><br />
+            <div style="margin: auto;width:800px;padding: 20px;background:rgb(124,124,124)">
+                <b>Inspiring Quote, random quote from a json file provided by <a style="color: white;" class="pointer" href="https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373">FreeCodeCamp.com</a></b>
+                <br /><br />
+                <div id="divQuote" runat="server"></div>
+            </div>
+            <br />
             <div style="color:lightgray">Reload the page for more randomness.</div>
-            <br />
-            <div>
-                <h2>Save a Website to PDF</h2>
-                <p><b>3rd party .NET library from <a style="color: white;" class="pointer" href="https://selectpdf.com">selectpdf.com</a></b></p>
+            <br /><br />
+            <div style="margin: auto;width:600px;padding: 20px;background:rgb(124,124,124)">
+                <b>Save a Website to PDF</b>
+                <p>3rd party .NET library from <a style="color: white;" class="pointer" href="https://selectpdf.com">selectpdf.com</a></p>
                 <input type="text" id="txtMakePDF" runat="server" />
                 <asp:Button Text="Make a PDF" runat="server" ID="btnMakePDF" OnClick="btnMakePDF_Click" />
             </div>

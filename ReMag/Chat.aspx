@@ -68,7 +68,9 @@
                 <ContentTemplate>
                     <asp:GridView ID="GridView1" runat="server" ShowHeader="false" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" DataSourceID="SqlDataSource1" GridLines="Horizontal">
                         <Columns>
-                            <asp:BoundField DataField="UDDateTime" SortExpression="UDDateTime" />
+                            <asp:BoundField DataField="UDDateTime" SortExpression="UDDateTime" DataFormatString = "{0:yyyy-MM-dd h:mm:ss tt}">
+                                <ItemStyle Wrap="False" />
+                            </asp:Boundfield>
                             <asp:BoundField DataField="UserName" SortExpression="UserName" />
                             <asp:BoundField DataField="Text" SortExpression="Text" />
                         </Columns>

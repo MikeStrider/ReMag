@@ -41,7 +41,7 @@ public partial class Chat : System.Web.UI.Page
         SqlDataAdapter da = new SqlDataAdapter("INSERT INTO [Chat] (UserName, Text, UDDateTime) VALUES (@user, @chat, @datetime)", conn);
         da.SelectCommand.Parameters.AddWithValue("@User", (string)Session["LoggedIn"]);
         da.SelectCommand.Parameters.AddWithValue("@Chat", txt_chat.Value);
-        da.SelectCommand.Parameters.AddWithValue("@datetime", DateTime.Now);
+        da.SelectCommand.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt"));
         DataSet ds = new DataSet();
         da.Fill(ds);
         Response.Redirect("Chat.aspx");

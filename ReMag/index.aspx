@@ -103,11 +103,11 @@
                         <a href="https://www.linkedin.com/in/michael-strong-050875142" target="_blank" id="btnLinkedIn" class="button" style="vertical-align: middle"><span>LinkedIn </span></a>
                     </div>
                     <div id="box-5" class="subscribedbox">
-                        <h3>medium.com/@michaelstrong_83904</h3>
+                        <h3>mstrong489.medium.com</h3>
                         <div class="logosize">
                             <img src="Images/medium.jpg" height="50" />
                         </div>
-                        <a href="https://medium.com/@michaelstrong_83904" target="_blank" id="btnMedium" class="button" style="vertical-align: middle"><span>Medium </span></a>
+                        <a href="https://mstrong489.medium.com/" target="_blank" id="btnMedium" class="button" style="vertical-align: middle"><span>Medium </span></a>
                     </div>
                     <div id="box-4" class="subscribedbox">
                         <h3>https://codepen.io/mikestrider</h3>
@@ -134,5 +134,11 @@
             </div>
         </div>
     </form>
+    <br /><br />
+    <div style="margin: auto;width:800px;padding: 20px;background:rgb(124,124,124)">
+        <i class="fas fa-exclamation-circle"></i> about this page 
+        <br />- this page is responsive because of css style flex-wrap: wrap;
+        <br />- this page pulls in icons from fontawesome.com
+    </div>
 </body>
 </html>
