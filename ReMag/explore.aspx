@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="myStyles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="myJavaScript.js"></script>
-    <meta name="description" content="This site is a place to resell your old magazines. It is currently in deveoplment. If you would like to contribute please look me up on GitHub." />
     <meta name="keywords" content="ReMag Michael Strong Resell Magazines" />
     <meta name="author" content="Michael Strong" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
