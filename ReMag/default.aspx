@@ -61,13 +61,13 @@
             <h3>Welcome to ReMag</h3>
             <p>we have a lot to do</p>
             <p>
-                Sell you magazines and look for mags to buy.  You can buy single issues or sign up for monthly.  The seller will ship monthly. <br />
+                Sell you magazines and look for mags to buy.  You can buy single issues or sign up for monthly.<br />
                 You will need an account.  Once created you can update your Profile.<br />
-                The My Mags page allows you to post magazines available for sale.<br />
+                The My Mags page allows you to post magazines.<br />
                 Shop is a list of mags available to buy.<br />
+                All shipping is handled outside of the app.  All payment is handled outside of the app.<br />
                 <br />
-
-                Page uses Materialize from google.  SQL, ASP.NET, JavaScript, etc.<br /><br />
+                Page uses Materialize from google.  mySQL, ASP.NET, JavaScript, etc.<br /><br />
 
                 We are using "Toasts" to update when the user as they navigate the site.<br /><br />
 

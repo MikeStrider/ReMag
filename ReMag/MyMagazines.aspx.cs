@@ -93,10 +93,11 @@ namespace ReMag
                 List<string> myList = senderObject.GetSubscribedEmails(); // adds all emails to a List<string>
                 senderObject.SendNewMagEmailNow(myList,            // sends list to sender object
                     "New Mag available on ReMag",
-                    "<h1>New Mag available on ReMag</h1>A user of Remag has posted a new magazine.  Go to <a href=\"http://mstrong.ca\">mstrong.ca</a> to view.<br><br><b>title:</b> " + x + "<br><b>description:</b> " + y,
+                    "<h1>New Mag available on ReMag</h1>A user of Remag has posted a new magazine." +
+                    "Go to mstrong.ca:88 to view.<br><br><b>title:</b> " + x + "<br><b>description:</b> " + y + "<br/><br/>" +
+                    "<a href=\"http://mstrong.ca:88\">http://mstrong.ca:88</a>.<br/><br/><br/>",
                     Request.QueryString["pid"],
-                    Session["LoggedIn"].ToString());
-
+                    Session["LoggedInID"].ToString());
             }
 
             // unpost the mag

@@ -63,4 +63,29 @@ public class SendMail
             }
         }
     }
+
+    public void SendEmailNow(string sendto, string subject, string body, string magID, string userID)
+    {
+        if (sendto == null || sendto == "")
+        {
+            // do nothing 
+        }
+        else if (sendto.Contains("@"))
+        {
+            using (MailMessage mm = new MailMessage("noreply.remag@gmail.com", sendto))
+            {
+                mm.Subject = subject;
+                mm.Body = body;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                mm.IsBodyHtml = true;
+                NetworkCredential networkcred = new NetworkCredential("noreply.remag@gmail.com", Globals.emailPassword);
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = networkcred;
+                smtp.Port = 587;
+                smtp.Send(mm);
+            }
+        }
+    }
 }

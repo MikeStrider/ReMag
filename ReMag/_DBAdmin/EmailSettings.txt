@@ -1,0 +1,1 @@
+﻿for email to work, turn on "Less secure app access".

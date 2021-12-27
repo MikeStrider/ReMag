@@ -49,6 +49,15 @@ namespace ReMag
                     da.Fill(ds);
                     Session["LoggedIn"] = username1.Value;
                     Session["LoggedInID"] = GetUserID(username1.Value);
+                    SendMail senderObject = new SendMail();
+                    senderObject.SendEmailNow(email1.Value + ",mike.strong@live.ca", "Welcome to ReMag!",
+                        "<h1>Welcome to ReMag!</h1> Sell you magazines and look for mags to buy.  You can buy single issues or sign up for monthly.<br/>" +
+                        "You will need an account.  Once created you can update your Profile.<br/>" +
+                        "The My Mags page allows you to post magazines.<br/>" + 
+                        "Shop is a list of mags available to buy.<br/>" +
+                        "All shipping is handled outside of the app.  All payment is handled outside of the app.<br/>" +
+                        "Click here to go to the website now <a href=\"http://mstrong.ca:88\">http://mstrong.ca:88</a>.<br/><br/><br/>",
+                        "", "");
                     Response.Redirect("default.aspx?reg=Y");
                 }
             }
