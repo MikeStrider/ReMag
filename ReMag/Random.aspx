@@ -200,8 +200,15 @@
                 <b>Grab all the Text from an Image</b>
                 <p>3rd party .NET library Tesseract-OCR and Tesseract.Net SDK <a style="color: white;" class="pointer" href="https://tesseract.patagames.com/">tesseract.patagames.com</a></p>
                 <asp:FileUpload ID="FileUploadControl" runat="server" />
-                <asp:Button Text="Grab Text" runat="server" ID="btnGrabText" OnClick="btnGrabText_Click" /><br />
+                <asp:Button Text="Grab Text" runat="server" ID="btnGrabText" OnClick="btnGrabText_Click" style="margin-bottom:5px;"/><br />
                 <asp:TextBox ID="txtYourText" runat="server" ReadOnly Height="109px" TextMode="MultiLine" Width="555px"></asp:TextBox>
+            </div>
+            <br /><br />
+            <div style="margin: auto;width:600px;padding: 20px;background:rgb(124,124,124)">
+                <b>Resize an Image</b>
+                <p>.... <a style="color: white;" class="pointer" href="https://tesseract.patagames.com/">....</a></p>
+                <asp:FileUpload ID="FileUpload1" runat="server" />
+                <asp:Button Text="Resize" runat="server" ID="btnResize" OnClick="btnResize_Click" /><br />
             </div>
 
             <div id="myModal" class="modal" runat="server">

@@ -54,7 +54,7 @@ public partial class Random : System.Web.UI.Page
             // show the error model
             if (ex.Message != "Thread was being aborted.")
             {
-                lblErrorMsg.Text = "Problem creating PDF. URL is invalid.";
+                lblErrorMsg.Text = "Problem creating PDF. URL is invalid.<br>" + ex.Message;
                 myModal.Style.Add("display", "block");
             }
         }
@@ -69,19 +69,26 @@ public partial class Random : System.Web.UI.Page
                 string filename = Path.GetFileName(FileUploadControl.FileName);
                 FileUploadControl.SaveAs(Server.MapPath("/uploads/") + filename);
                 var path = Server.MapPath("/uploads/") + filename;
+                OcrApi.PathToEngine = @"C:\inetpub\wwwroot\ReMag\packages\Tesseract.Net.SDK.4.5.411\build\x64\tesseract.dll";
                 using (var api = OcrApi.Create())
                 {
                     api.Init(Languages.English);
                     string plainText = api.GetTextFromImage(path);
-                    txtYourText.Text += plainText;
+                    txtYourText.Text = plainText;
                 }
             } catch (Exception ex)
             {
-                lblErrorMsg.Text = "Trial Version - Image must be less then 500px by 500px.";
+                lblErrorMsg.Text = "Trial Version - Image must be less then 500px by 500px.<br>" + ex.Message;
                 myModal.Style.Add("display", "block");
             }
         }
     }
+
+    protected void btnResize_Click(object sender, EventArgs e)
+    {
+
+    }
+        
 }
 
 public class JsonClass
