@@ -134,11 +134,12 @@
             </div>
         </div>
     </form>
-    <br /><br />
+    <br />
     <div style="margin: auto;width:800px;padding: 20px;background:rgb(124,124,124)">
         <i class="fas fa-exclamation-circle"></i> about this page 
         <br />- this page is responsive because of css style flex-wrap: wrap;
         <br />- this page pulls in icons from fontawesome.com
     </div>
 </body>
+    <br /><br /><br /><br />
 </html>

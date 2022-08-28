@@ -181,11 +181,13 @@
             </script>
         </div>
     </form>
-</body><br /><br />
+    
+</body>
         <div style="margin: auto;width:800px;padding: 20px;background:rgb(124,124,124)">
         <i class="fas fa-exclamation-circle"></i> about this page
             <br />- this page is responsive because of css style flex-wrap: wrap;
             <br />
             - this page calls out to an API and pulls in news stories, using javascript, fetch
     </div>
+    <br /><br /><br /><br />
 </html>

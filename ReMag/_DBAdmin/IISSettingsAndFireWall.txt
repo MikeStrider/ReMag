@@ -4,8 +4,9 @@ Know the IP of your router - 192.168.1.1
 Forward the external port to the internal port.  88 to 80
 Use all WAN Interface, and loopback.
 Windows firewall rules do not matter.
+You will need GoDaddy Forwarding . so that mstrong.ca goes to 88 . your router does not allow port 80 to be changed
 
 For IIS and SQL.  Use your windows login as the Identity.
 <add name="ReMag-DBConnectionString" connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ReMagDB;" providerName="System.Data.SqlClient" />
 The ConnectionString does not really matter as credentials are handled by IIS.
-Needed to update an IIS config file.  Located at C:\Windows\System32\inetsrv\config.applicationHost.config
+Needed to update an IIS config file.  Located at C:\Windows\System32\inetsrv\config\applicationHost.config ... setProfileEnvironment="true" 

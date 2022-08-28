@@ -195,11 +195,20 @@
                 <input type="text" id="txtMakePDF" runat="server" />
                 <asp:Button Text="Make a PDF" runat="server" ID="btnMakePDF" OnClick="btnMakePDF_Click" />
             </div>
+            <br /><br />
+             <div style="margin: auto;width:600px;padding: 20px;background:rgb(124,124,124)">
+                <b>Grab all the Text from an Image</b>
+                <p>3rd party .NET library Tesseract-OCR and Tesseract.Net SDK <a style="color: white;" class="pointer" href="https://tesseract.patagames.com/">tesseract.patagames.com</a></p>
+                <asp:FileUpload ID="FileUploadControl" runat="server" />
+                <asp:Button Text="Grab Text" runat="server" ID="btnGrabText" OnClick="btnGrabText_Click" /><br />
+                <asp:TextBox ID="txtYourText" runat="server" ReadOnly Height="109px" TextMode="MultiLine" Width="555px"></asp:TextBox>
+            </div>
 
             <div id="myModal" class="modal" runat="server">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p style="color: red; font-weight: 600">Error creating PDF. URL is invalid.</p>
+                    <asp:Label style="color: red; font-weight: 600" ID="Label1" runat="server" Text="Error"></asp:Label><br />
+                    <asp:Label style="color: red; font-weight: 600" ID="lblErrorMsg" runat="server" Text=""></asp:Label>
                 </div>
             </div>
 
@@ -240,13 +249,19 @@
                     }
                 }
 
-                var btnMakePDF = document.getElementById("btnMakePDF");
-                btnMakePDF.onclick = function () {
+                // use the loading image
+                document.getElementById("btnMakePDF").onclick = function () {
+                    window.scrollTo({ top: 0, behavior: "auto" });
+                    document.getElementById("spinner").style.display = "block";
+                }
+                document.getElementById("btnGrabText").onclick = function () {
+                    window.scrollTo({ top: 0, behavior: "auto" });
                     document.getElementById("spinner").style.display = "block";
                 }
 
             </script>
         </div>
     </form>
+    <br /><br /><br /><br />
 </body>
 </html>

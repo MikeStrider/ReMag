@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SelectPdf;
+using Patagames.Ocr;
+using Patagames.Ocr.Enums;
 
 public partial class Random : System.Web.UI.Page
 {
@@ -49,6 +54,30 @@ public partial class Random : System.Web.UI.Page
             // show the error model
             if (ex.Message != "Thread was being aborted.")
             {
+                lblErrorMsg.Text = "Problem creating PDF. URL is invalid.";
+                myModal.Style.Add("display", "block");
+            }
+        }
+    }
+
+    protected void btnGrabText_Click(object sender, EventArgs e)
+    {
+        if (FileUploadControl.HasFile)
+        {
+            try
+            {
+                string filename = Path.GetFileName(FileUploadControl.FileName);
+                FileUploadControl.SaveAs(Server.MapPath("/uploads/") + filename);
+                var path = Server.MapPath("/uploads/") + filename;
+                using (var api = OcrApi.Create())
+                {
+                    api.Init(Languages.English);
+                    string plainText = api.GetTextFromImage(path);
+                    txtYourText.Text += plainText;
+                }
+            } catch (Exception ex)
+            {
+                lblErrorMsg.Text = "Trial Version - Image must be less then 500px by 500px.";
                 myModal.Style.Add("display", "block");
             }
         }
