@@ -1,53 +1,134 @@
-﻿CREATE TABLE [dbo].[Chat] (
-    [UKID]       INT           IDENTITY (1, 1) NOT NULL,
-    [Username]   NCHAR (50)    NULL,
-    [Text]       NCHAR (1000)  NULL,
-    [UDDateTime] SMALLDATETIME NULL,
-    PRIMARY KEY CLUSTERED ([UKID] ASC)
-);
+﻿USE [ReMagDB]
+GO
 
-CREATE TABLE [dbo].[Images] (
-    [ID]    INT           IDENTITY (1, 1) NOT NULL,
-    [Path]  VARCHAR (150) NULL,
-    [MagID] INT           NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
+/****** Object:  Table [dbo].[Chat]    Script Date: 2022-08-28 12:40:47 AM ******/
+SET ANSI_NULLS ON
+GO
 
-CREATE TABLE [dbo].[Logging] (
-    [Id]         INT         IDENTITY (1, 1) NOT NULL,
-    [UDDateTime] DATETIME    NULL,
-    [Type]       NCHAR (50)  NULL,
-    [Info]       NCHAR (200) NULL,
-    [Username]   NCHAR (200) NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+SET QUOTED_IDENTIFIER ON
+GO
 
-CREATE TABLE [dbo].[MyMags] (
-    [Id]          INT           IDENTITY (1, 1) NOT NULL,
-    [Title]       VARCHAR (50)  NULL,
-    [Posted]      VARCHAR (3)   NULL,
-    [Retired]     VARCHAR (3)   NULL,
-    [Description] VARCHAR (500) NULL,
-    [Type]        VARCHAR (20)  NULL,
-    [User]        INT           NULL,
-    [Price]       VARCHAR (50)  NULL,
-    [Image]       VARCHAR (100) NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+CREATE TABLE [dbo].[Chat](
+	[UKID] [int] IDENTITY(1,1) NOT NULL,
+	[Username] [nchar](50) NULL,
+	[Text] [nchar](1000) NULL,
+	[UDDateTime] [smalldatetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UKID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
-CREATE TABLE [dbo].[Profile] (
-    [Id]         INT            IDENTITY (1, 1) NOT NULL,
-    [Name]       VARCHAR (50)   NULL,
-    [Email]      VARCHAR (100)  NULL,
-    [Image]      VARCHAR (200)  NULL,
-    [Password]   VARCHAR (50)   NULL,
-    [Address]    VARCHAR (500)  NULL,
-    [Bio]        VARCHAR (1000) NULL,
-    [Phone]      VARCHAR (20)   NULL,
-    [City]       VARCHAR (100)  NULL,
-    [Zip]        VARCHAR (20)   NULL,
-    [GetNewMags] VARCHAR (1)    NULL,
-    [State]      VARCHAR (10)   NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+
+USE [ReMagDB]
+GO
+
+/****** Object:  Table [dbo].[Images]    Script Date: 2022-08-28 12:40:52 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Images](
+	[ImageID] [int] IDENTITY(1,1) NOT NULL,
+	[Path] [varchar](150) NULL,
+	[MagID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ImageID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+USE [ReMagDB]
+GO
+
+/****** Object:  Table [dbo].[Logging]    Script Date: 2022-08-28 12:41:02 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Logging](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UDDateTime] [datetime] NULL,
+	[Type] [nchar](50) NULL,
+	[Info] [nchar](200) NULL,
+	[UserID] [nchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [ReMagDB]
+GO
+
+/****** Object:  Table [dbo].[MyMags]    Script Date: 2022-08-28 12:41:08 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MyMags](
+	[MagID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](50) NULL,
+	[Posted] [varchar](3) NULL,
+	[Retired] [varchar](3) NULL,
+	[Description] [varchar](500) NULL,
+	[Type] [varchar](20) NULL,
+	[User] [int] NULL,
+	[Price] [varchar](50) NULL,
+	[Image] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MagID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [ReMagDB]
+GO
+
+/****** Object:  Table [dbo].[Profile]    Script Date: 2022-08-28 12:41:14 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Profile](
+	[ProfileID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Email] [varchar](100) NULL,
+	[Image] [varchar](200) NULL,
+	[Password] [varchar](50) NULL,
+	[Address] [varchar](500) NULL,
+	[Bio] [varchar](1000) NULL,
+	[Telephone] [varchar](20) NULL,
+	[City] [varchar](100) NULL,
+	[Zip] [varchar](20) NULL,
+	[GetNewMags] [varchar](1) NULL,
+	[State] [varchar](10) NULL,
+	[Country] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ProfileID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+
 

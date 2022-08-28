@@ -1,1 +1,1 @@
-﻿for email to work, turn on "Less secure app access".
+﻿for email to work, turn on "Less secure app access". ... no longer allowed as of May 30, 2022
