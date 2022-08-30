@@ -1,0 +1,2 @@
+﻿
+Need to move tessdata to special location.  c:\windows\system32\inetsrv\tessdata

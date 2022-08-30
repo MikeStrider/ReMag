@@ -56,7 +56,7 @@ namespace ReMag
                         "The My Mags page allows you to post magazines.<br/>" + 
                         "Shop is a list of mags available to buy.<br/>" +
                         "All shipping is handled outside of the app.  All payment is handled outside of the app.<br/>" +
-                        "Click here to go to the website now <a href=\"http://mstrong.ca:88\">http://mstrong.ca:88</a>.<br/><br/><br/>",
+                        "Click here to go to the website now <a href=\"http://mstrong.ca\">http://mstrong.ca</a>.<br/><br/><br/>",
                         "", "");
                     Response.Redirect("default.aspx?reg=Y");
                 }

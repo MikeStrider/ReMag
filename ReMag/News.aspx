@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="News.aspx.cs" Inherits="News" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Michael Strong News</title>
@@ -13,39 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-        <%-- Nav Bar Start --%>
-        <nav class="navbar">
-            <span class="open-slide">
-                <a href="#" onclick="openSlideMenu()">
-                    <svg width="30" height="30">
-                        <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
-                        <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
-                        <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
-                    </svg>
-                </a>
-            </span>
-
-            <ul class="navbar-nav">
-                <li><a href="index.aspx">Home</a></li>
-                <li><a href="Projects.aspx">Projects</a></li>
-                <li><a href="News.aspx">News</a></li>
-                <li><a href="Random.aspx">Random Things</a></li>
-            </ul>
-            <div id="emailtopright">
-                <a href="mailto:mike.strong@live.ca"><i class="far fa-envelope"></i>mike.strong@live.ca</a>
-            </div>
-        </nav>
-
-        <div id="side-menu" class="side-nav">
-            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-            <a href="index.aspx">Home</a>
-            <a href="Projects.aspx">Projects</a>
-            <a href="News.aspx">News</a>
-            <a href="Random.aspx">Random Things</a>
-        </div>
-        <%-- Nav Bar End --%>
-
+      <!-- #include file="myheader.html" -->
         <div id="main">
 
             <a href="#">

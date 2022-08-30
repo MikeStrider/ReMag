@@ -134,40 +134,15 @@
 </head>
 <body>
     <form id="form2" runat="server">
-
-        <%-- Nav Bar Start --%>
-        <nav class="navbar">
-            <span class="open-slide">
-                <a href="#" onclick="openSlideMenu()">
-                    <svg width="30" height="30">
-                        <path d="M0,5 30,5" stroke="#fff" stroke-width="5" />
-                        <path d="M0,14 30,14" stroke="#fff" stroke-width="5" />
-                        <path d="M0,23 30,23" stroke="#fff" stroke-width="5" />
-                    </svg>
-                </a>
-            </span>
-
-            <ul class="navbar-nav">
-                <li><a href="index.aspx">Home</a></li>
-                <li><a href="Projects.aspx">Projects</a></li>
-                <li><a href="News.aspx">News</a></li>
-                <li><a href="Random.aspx">Random Things</a></li>
-            </ul>
-            <div id="emailtopright">
-                <a href="mailto:mike.strong@live.ca"><i class="far fa-envelope"></i>mike.strong@live.ca</a>
-            </div>
-        </nav>
-
-        <div id="side-menu" class="side-nav">
-            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-            <a href="index.aspx">Home</a>
-            <a href="Projects.aspx">Projects</a>
-            <a href="News.aspx">News</a>
-            <a href="Random.aspx">Random Things</a>
-        </div>
-        <%-- Nav Bar End --%>
+         <!-- #include file="myheader.html" -->
         <div id="main" style="text-align: center;">
-
+            <a href="#">
+                <div id="iconsize">
+                    <div class="tooltip">
+                        <i class="fas fa-arrow-circle-up"></i><span class="tooltiptext">scroll to top</span>
+                    </div>
+                </div>
+            </a>
             <div id="spinner" style="display:none;" runat="server">
                 <div style="color:#cef;">loading, please wait ...</div>
                 <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -187,8 +162,10 @@
                 <div id="divQuote" runat="server"></div>
             </div>
             <br />
-            <div style="color:lightgray">Reload the page for more randomness.</div>
-            <br /><br />
+            <div style="color:lightgray">Reload the page for more randomness.<br />
+                or<br />
+                Play with the tools below.</div>
+            <br />
             <div style="margin: auto;width:600px;padding: 20px;background:rgb(124,124,124)">
                 <b>Save a Website to PDF</b>
                 <p>3rd party .NET library from <a style="color: white;" class="pointer" href="https://selectpdf.com">selectpdf.com</a></p>
@@ -206,7 +183,7 @@
             <br /><br />
             <div style="margin: auto;width:600px;padding: 20px;background:rgb(124,124,124)">
                 <b>Resize an Image</b>
-                <p>.... <a style="color: white;" class="pointer" href="https://tesseract.patagames.com/">....</a></p>
+                <p>using c# library called ImageProcessor <a style="color: white;" class="pointer" href="https://imageprocessor.org/">imageprocessor.org</a></p>
                 <asp:FileUpload ID="FileUpload1" runat="server" />
                 <asp:Button Text="Resize" runat="server" ID="btnResize" OnClick="btnResize_Click" /><br />
             </div>

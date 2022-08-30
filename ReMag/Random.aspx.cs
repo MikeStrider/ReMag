@@ -13,6 +13,11 @@ using Newtonsoft.Json.Linq;
 using SelectPdf;
 using Patagames.Ocr;
 using Patagames.Ocr.Enums;
+using ImageProcessor.Imaging.Formats;
+using System.Drawing;
+using ImageProcessor;
+using System.Net.Http;
+using System.Net;
 
 public partial class Random : System.Web.UI.Page
 {
@@ -86,9 +91,34 @@ public partial class Random : System.Web.UI.Page
 
     protected void btnResize_Click(object sender, EventArgs e)
     {
-
+        string filename = Path.GetFileName(FileUpload1.FileName);
+        FileUpload1.SaveAs(Server.MapPath("/resize/") + filename);
+        var path = Server.MapPath("/resize/") + filename;
+        byte[] photoBytes = File.ReadAllBytes(path);
+        // Format is automatically detected though can be changed.
+        ISupportedImageFormat format = new JpegFormat { Quality = 70 };
+        Size size = new Size(499, 499);
+        using (MemoryStream inStream = new MemoryStream(photoBytes))
+        {
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                // Initialize the ImageFactory using the overload to preserve EXIF metadata.
+                using (ImageFactory imageFactory = new ImageFactory(preserveExifData:true))
+                {
+                    // Load, resize, set the format and quality and save an image.
+                    imageFactory.Load(inStream)
+                                .Resize(size)
+                                .Format(format)
+                                .Save(path);
+                }
+            }
+        }
+        byte[] fileByteArray = File.ReadAllBytes(Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, path));
+        Response.AddHeader("Content-disposition", String.Format("attachment; filename={0}", "resized." + filename));
+        Response.ContentType = "application/octet-stream";
+        Response.BinaryWrite(fileByteArray);
     }
-        
+
 }
 
 public class JsonClass

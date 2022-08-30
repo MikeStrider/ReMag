@@ -31,6 +31,6 @@ public class MySharedClasses
 
 public static class Globals
 {
-    public static string emailPassword = "remag12#$";
+    public static string emailPassword = "zxxymxeekjidynes"; // old remag12#$
     public static string masterPassword = "mikemike";
 }
