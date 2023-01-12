@@ -7,6 +7,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using System.Threading;
+using System.IO;
+using System.Security.Permissions;
+using System.Threading.Tasks;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 
 public partial class Blogs : System.Web.UI.Page
 {
@@ -14,21 +19,26 @@ public partial class Blogs : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         complexValue = "something from c#";
-        Label2.Text = complexValue;
     }
 
     [WebMethod]
     public static string GetCurrentTime(string name)
     {
         // can to more complex things here if needed, for example pull data from a database
-        return "Hello " + name + Environment.NewLine + "The Current Time is: " + DateTime.Now.ToString() + Environment.NewLine + 
+        return "Hello " + name + Environment.NewLine + "The Current Time is: " + DateTime.Now.ToString() + Environment.NewLine +
             "And this data is from c#.  Possibly its your data from the database.";
     }
 
+    private void CountCharacters()
+    {
 
+    }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Label1.Text = "Hello " + txtUserName.Text + "<br> The Current Time is: " + DateTime.Now.ToString() + "<br>And this data is from c#.  Possibly its your data from the database.";
-        ClientScript.RegisterClientScriptBlock(this.GetType(), "", "window.onload=function(){window.scrollTo(0,document.body.scrollHeight)};", true);
+        Thread t1 = new Thread(new ThreadStart(CountCharacters));
+        t1.Start();
+        Thread t2 = new Thread(new ThreadStart(CountCharacters));
+        t2.Start();
     }
+
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LearningAjax.aspx.cs" Inherits="Blogs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LearningAsync.aspx.cs" Inherits="Blogs" Async="true"%>
 
 <!DOCTYPE html>
 
@@ -29,35 +29,13 @@
                     </div>
                 </div>
             </a>
-            <h1>Learning Ajax</h1>
+            <h1>Learning Async and Await</h1>
             <div style="margin: auto;width:900px;padding: 20px;background:rgb(124,124,124)">
-                Async Javascript and XML allows you to load in data without making the entire page reload.  2 examples being: <br /> - If a request will take some time, you do 
-                not want your users to wait.  <br /> - Sometimes you only want to load a small piece of the page.<br /> It allows the website to be more dynamic, instead of button
-                click and the entire page reloads.<br />
-                It also allows you to get data from anywhere and return it to the one page.<br /><br />This example loads data from c# code behind, using Web Methods. The video is 
-                playing to show the entire page is not reloading.
+               blah blah<br />
+                <asp:Label ID="lblCount" runat="server" Text="Label"></asp:Label><br />
+                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
             </div><br />
-            <div style="margin: auto;width:900px;padding: 20px;background:rgb(124,124,124)">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/BHACKCNDMW8?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-            </div><br />
-                       <div>
-               <%=complexValue%><br />
-               <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label><br /><br />
-            </div>
-
-          <div style="margin: auto;width:900px;padding: 20px;background:rgb(124,124,124)">
-
-              Enter something here to send to the server. <asp:TextBox ID="txtUserName" runat="server" Width="189px"></asp:TextBox> <br />
-
-              Do it the Ajax way. <input id="btnGetTime" type="button" value="Submit" onclick="ShowCurrentTime()" /> <br /> 
-
-              Do it the, load entire page way. <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" /><br /><br />
-
-              <asp:Label ID="Label1" runat="server" Text="--- This here will change. ---"></asp:Label>
-          </div>
-
-
+            
 
 
         </div>
